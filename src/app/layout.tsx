@@ -17,6 +17,11 @@ export const metadata: Metadata = {
     default: "Navi Logistics - Your Trusted Logistics Partner",
     template: "%s | Navi Logistics",
   },
+  icons: {
+    icon: '/Navi Logistics.jpeg',
+    shortcut: '/Navi Logistics.jpeg',
+    apple: '/Navi Logistics.jpeg',
+  },
   description:
     "Navi Logistics offers comprehensive logistics solutions including freight shipping, warehousing, supply chain management, and last-mile delivery services worldwide.",
   keywords: [
