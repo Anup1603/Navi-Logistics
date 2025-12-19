@@ -60,9 +60,14 @@ export function Header() {
                 className="w-10 h-10 sm:w-[50px] sm:h-[50px]"
               />
             </div>
-            <div>
-              <span className="text-sm sm:text-lg md:text-xl font-bold text-foreground">Navi</span>
-              <span className="text-sm sm:text-lg md:text-xl font-bold text-gradient"> Logistics</span>
+            <div className="flex flex-col">
+              <div>
+                <span className="text-sm sm:text-lg md:text-xl font-bold text-foreground">Navi</span>
+                <span className="text-sm sm:text-lg md:text-xl font-bold text-gradient"> Logistics</span>
+              </div>
+              <span className="text-[8px] sm:text-[10px] md:text-xs font-medium text-muted-foreground tracking-wider uppercase">
+                Logistics Made Simple
+              </span>
             </div>
           </Link>
 

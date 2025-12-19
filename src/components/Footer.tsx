@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Truck, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
@@ -16,9 +16,17 @@ const services = [
   { name: "Freight Shipping", href: "/services#freight" },
   { name: "Warehousing", href: "/services#warehousing" },
   { name: "Supply Chain", href: "/services#supply-chain" },
-  { name: "Last Mile Delivery", href: "/services#last-mile" },
-  { name: "Express Shipping", href: "/services#express" },
+  { name: "Express Delivery", href: "/services#express" },
+  { name: "Air Freight", href: "/services#air-freight" },
+  { name: "Ocean Freight", href: "/services#ocean-freight" },
 ];
+
+const serviceAreas = {
+  "West Bengal": ["Howrah", "Kolkata", "Asansol", "Durgapur", "Siliguri", "Bardhaman", "Kharagpur"],
+  "Eastern India": ["Patna", "Ranchi", "Jamshedpur", "Bhubaneswar", "Guwahati"],
+  "North India": ["Delhi NCR", "Lucknow", "Kanpur", "Gurugram", "Noida"],
+  "Central India": ["Bhopal", "Indore", "Raipur"],
+};
 
 const socialLinks = [
   { name: "Facebook", href: "https://facebook.com", icon: Facebook },
@@ -44,14 +52,19 @@ export function Footer() {
                   className="w-auto h-auto"
                 />
               </div>
-              <div>
-                <span className="text-xl font-bold">Navi</span>
-                <span className="text-xl font-bold text-accent"> Logistics</span>
+              <div className="flex flex-col">
+                <div>
+                  <span className="text-xl font-bold">Navi</span>
+                  <span className="text-xl font-bold text-accent"> Logistics</span>
+                </div>
+                <span className="text-[10px] font-medium text-primary-foreground/70 tracking-wider uppercase">
+                  Logistics Made Simple
+                </span>
               </div>
             </Link>
             <p className="text-primary-foreground/80 leading-relaxed">
-              Your trusted partner in global logistics and supply chain solutions. 
-              We deliver excellence across borders with speed, reliability, and care.
+              Your trusted partner in logistics and supply chain solutions. 
+              Delivering excellence across India with speed, reliability, and care since 2009.
             </p>
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
@@ -109,11 +122,11 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 mt-0.5 text-accent shrink-0" />
-                <span className="text-primary-foreground/80">
+                <address className="text-primary-foreground/80 not-italic">
                   146 Foreshore Road, Shibpur,
                   <br />
-                  Howrah (West Bengal) - 711102
-                </span>
+                  Howrah, West Bengal - 711102
+                </address>
               </li>
               <li>
                 <Link
@@ -146,7 +159,32 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Service Areas Section - SEO */}
         <Separator className="my-10 bg-primary-foreground/20" />
+        
+        <div className="mb-10">
+          <h3 className="text-lg font-semibold mb-6">Service Areas</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {Object.entries(serviceAreas).map(([region, cities]) => (
+              <div key={region}>
+                <h4 className="text-accent font-medium mb-2">{region}</h4>
+                <ul className="space-y-1">
+                  {cities.map((city) => (
+                    <li key={city} className="text-primary-foreground/70 text-sm">
+                      {city}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p className="text-primary-foreground/60 text-sm mt-4">
+            Also serving: 24 Parganas, Hooghly, Bihar, Jharkhand, Odisha, Assam, Sikkim, 
+            Uttar Pradesh, Haryana, Madhya Pradesh, Chhattisgarh & Pan India
+          </p>
+        </div>
+
+        <Separator className="mb-10 bg-primary-foreground/20" />
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/60">
