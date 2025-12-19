@@ -288,8 +288,8 @@ export default function AboutPage() {
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/20" />
+              {/* Timeline line - centered on md+, left-aligned on mobile */}
+              <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 h-full w-1 bg-primary/20" />
               
               <StaggerContainer className="space-y-12" staggerDelay={0.15}>
                 {milestones.map((milestone, index) => (
@@ -297,11 +297,11 @@ export default function AboutPage() {
                     <AnimatedCard 
                       delay={index * 0.1}
                       className={`relative flex items-center ${
-                        index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                        index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                       }`}
                     >
-                      {/* Content */}
-                      <div className={`w-5/12 ${index % 2 === 0 ? "text-right pr-8" : "text-left pl-8"}`}>
+                      {/* Content - full width on mobile, half on md+ */}
+                      <div className={`w-full pl-12 md:pl-0 md:w-5/12 ${index % 2 === 0 ? "md:text-right md:pr-8" : "md:text-left md:pl-8"}`}>
                         <Card className="p-6 border-2 hover:border-accent/50 hover:shadow-lg transition-all">
                           <CardContent className="p-0">
                             <div className="text-accent font-bold text-xl mb-2">{milestone.year}</div>
@@ -311,13 +311,13 @@ export default function AboutPage() {
                         </Card>
                       </div>
                       
-                      {/* Circle */}
-                      <div className="w-2/12 flex justify-center">
+                      {/* Circle - left-aligned on mobile, centered on md+ */}
+                      <div className="absolute left-4 md:static md:w-2/12 flex md:justify-center">
                         <div className="w-6 h-6 rounded-full bg-accent border-4 border-background shadow-lg z-10" />
                       </div>
                       
-                      {/* Spacer */}
-                      <div className="w-5/12" />
+                      {/* Spacer - hidden on mobile */}
+                      <div className="hidden md:block md:w-5/12" />
                     </AnimatedCard>
                   </StaggerItem>
                 ))}

@@ -307,34 +307,35 @@ export default function HomePage() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
-                <div className="absolute -bottom-8 -left-8 grid grid-cols-2 gap-4">
-                  <AnimatedCard delay={0.2} className="p-6 rounded-xl bg-white shadow-xl">
-                    <Users className="h-10 w-10 text-primary mb-3" />
-                    <div className="text-2xl font-bold">
+                {/* Stats cards - smaller on mobile, normal on lg+ */}
+                <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-4 lg:-bottom-8 lg:-left-8 grid grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
+                  <AnimatedCard delay={0.2} className="p-3 sm:p-4 lg:p-6 rounded-lg sm:rounded-xl bg-white shadow-lg sm:shadow-xl">
+                    <Users className="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 text-primary mb-1 sm:mb-2 lg:mb-3" />
+                    <div className="text-base sm:text-xl lg:text-2xl font-bold">
                       <AnimatedCounter end={500} suffix="+" />
                     </div>
-                    <div className="text-sm text-muted-foreground">Happy Clients</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Happy Clients</div>
                   </AnimatedCard>
-                  <AnimatedCard delay={0.3} className="p-6 rounded-xl bg-white shadow-xl">
-                    <Package className="h-10 w-10 text-accent mb-3" />
-                    <div className="text-2xl font-bold">
+                  <AnimatedCard delay={0.3} className="p-3 sm:p-4 lg:p-6 rounded-lg sm:rounded-xl bg-white shadow-lg sm:shadow-xl">
+                    <Package className="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 text-accent mb-1 sm:mb-2 lg:mb-3" />
+                    <div className="text-base sm:text-xl lg:text-2xl font-bold">
                       <AnimatedCounter end={1} suffix="M+" />
                     </div>
-                    <div className="text-sm text-muted-foreground">Packages Delivered</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Packages Delivered</div>
                   </AnimatedCard>
                 </div>
-                <div className="absolute -top-8 -right-8 grid grid-cols-2 gap-4">
-                  <AnimatedCard delay={0.4} className="p-6 rounded-xl bg-white shadow-xl">
-                    <Globe className="h-10 w-10 text-primary mb-3" />
-                    <div className="text-2xl font-bold">
+                <div className="absolute -top-4 -right-2 sm:-top-6 sm:-right-4 lg:-top-8 lg:-right-8 grid grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
+                  <AnimatedCard delay={0.4} className="p-3 sm:p-4 lg:p-6 rounded-lg sm:rounded-xl bg-white shadow-lg sm:shadow-xl">
+                    <Globe className="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 text-primary mb-1 sm:mb-2 lg:mb-3" />
+                    <div className="text-base sm:text-xl lg:text-2xl font-bold">
                       <AnimatedCounter end={50} suffix="+" />
                     </div>
-                    <div className="text-sm text-muted-foreground">Countries Served</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Countries Served</div>
                   </AnimatedCard>
-                  <AnimatedCard delay={0.5} className="p-6 rounded-xl bg-white shadow-xl">
-                    <Star className="h-10 w-10 text-accent mb-3" />
-                    <div className="text-2xl font-bold">4.9</div>
-                    <div className="text-sm text-muted-foreground">Customer Rating</div>
+                  <AnimatedCard delay={0.5} className="p-3 sm:p-4 lg:p-6 rounded-lg sm:rounded-xl bg-white shadow-lg sm:shadow-xl">
+                    <Star className="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 text-accent mb-1 sm:mb-2 lg:mb-3" />
+                    <div className="text-base sm:text-xl lg:text-2xl font-bold">4.9</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Customer Rating</div>
                   </AnimatedCard>
                 </div>
               </div>
