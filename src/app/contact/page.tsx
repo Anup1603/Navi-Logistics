@@ -192,7 +192,7 @@ export default function ContactPage() {
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="email">Email Address *</Label>
+                            <Label htmlFor="email">Email Address</Label>
                             <Input
                               id="email"
                               name="email"
@@ -200,13 +200,12 @@ export default function ContactPage() {
                               value={formData.email}
                               onChange={handleChange}
                               placeholder="john@example.com"
-                              required
                             />
                           </div>
                         </div>
                         <div className="grid md:grid-cols-2 gap-6">
                           <div className="space-y-2">
-                            <Label htmlFor="phone">Phone Number</Label>
+                            <Label htmlFor="phone">Phone Number *</Label>
                             <Input
                               id="phone"
                               name="phone"
@@ -214,6 +213,7 @@ export default function ContactPage() {
                               value={formData.phone}
                               onChange={handleChange}
                               placeholder="+91 98300 32732"
+                              required
                             />
                           </div>
                           <div className="space-y-2">
@@ -237,10 +237,10 @@ export default function ContactPage() {
                             className="w-full px-3 py-2 border border-input rounded-md bg-background"
                           >
                             <option value="">Select a service</option>
-                            <option value="freight">Freight Shipping</option>
+                            <option value="freight-shipping">Freight Shipping</option>
                             <option value="warehousing">Warehousing</option>
                             <option value="supply-chain">Supply Chain Management</option>
-                            <option value="express">Express Delivery</option>
+                            <option value="express-delivery">Express Delivery</option>
                             <option value="air-freight">Air Freight</option>
                             <option value="ocean-freight">Ocean Freight</option>
                             <option value="other">Other</option>
