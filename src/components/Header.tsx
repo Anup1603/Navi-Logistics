@@ -60,9 +60,9 @@ export function Header() {
                 className="w-10 h-10 sm:w-[50px] sm:h-[50px]"
               />
             </div>
-            <div className="hidden sm:block">
-              <span className="text-lg sm:text-xl font-bold text-foreground">Navi</span>
-              <span className="text-lg sm:text-xl font-bold text-gradient"> Logistics</span>
+            <div>
+              <span className="text-sm sm:text-lg md:text-xl font-bold text-foreground">Navi</span>
+              <span className="text-sm sm:text-lg md:text-xl font-bold text-gradient"> Logistics</span>
             </div>
           </Link>
 
@@ -110,8 +110,14 @@ export function Header() {
               <div className="flex flex-col h-full p-5 sm:p-6">
                 <div className="flex items-center gap-3 mb-6 pb-4 border-b">
                   <Link href="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
-                    <div className="p-2 rounded-xl bg-primary text-primary-foreground">
-                      <Truck className="h-5 w-5 sm:h-6 sm:w-6" />
+                    <div className="rounded-xl overflow-hidden">
+                      <Image 
+                        src="/Navi Logistics.jpeg" 
+                        alt="Navi Logistics Logo" 
+                        width={40} 
+                        height={40}
+                        className="w-10 h-10"
+                      />
                     </div>
                     <span className="text-base sm:text-lg font-bold">Navi Logistics</span>
                   </Link>
