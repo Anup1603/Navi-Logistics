@@ -17,17 +17,17 @@ A modern, professional logistics company website built with Next.js 16, React, a
 
 ## 📦 Pages
 
-| Page | Route | Description |
-|------|-------|-------------|
-| Home | `/` | Hero, services, stats, testimonials |
-| About | `/about` | Company story, timeline, team |
-| Services | `/services` | Detailed service offerings |
-| Careers | `/careers` | Job openings and benefits |
-| Contact | `/contact` | Contact form and map |
-| News | `/news` | Company updates |
-| Blog | `/blog` | Articles and posts |
-| Terms | `/terms` | Terms of Service |
-| Privacy | `/privacy` | Privacy Policy |
+| Page     | Route       | Description                         |
+| -------- | ----------- | ----------------------------------- |
+| Home     | `/`         | Hero, services, stats, testimonials |
+| About    | `/about`    | Company story, timeline, team       |
+| Services | `/services` | Detailed service offerings          |
+| Careers  | `/careers`  | Job openings and benefits           |
+| Contact  | `/contact`  | Contact form and map                |
+| News     | `/news`     | Company updates                     |
+| Blog     | `/blog`     | Articles and posts                  |
+| Terms    | `/terms`    | Terms of Service                    |
+| Privacy  | `/privacy`  | Privacy Policy                      |
 
 ## 🛠️ Tech Stack
 
@@ -102,7 +102,7 @@ npm start
 
 **Navi Logistics**  
 146 Foreshore Road, Shibpur  
-Howrah, West Bengal - 711102
+Howrah, West Bengal - 711101
 
 - Phone: +91 98300 32732
 - Email: contact@navilogistics.in

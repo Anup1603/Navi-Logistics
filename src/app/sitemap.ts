@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://navilogistics.in";
-  
+
   // Main routes with priorities
   const mainRoutes = [
     { route: "", priority: 1.0, changeFreq: "weekly" as const },
@@ -16,12 +16,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Service-specific anchors for better indexing
   const serviceAnchors = [
-    "/services#freight",
-    "/services#warehousing",
-    "/services#supply-chain",
+    "/services#3pl",
     "/services#express",
+    "/services#warehousing",
+    "/services#ftl",
+    "/services#ptl",
+    "/services#speed-trucking",
     "/services#air-freight",
-    "/services#ocean-freight",
+    "/services#rail",
   ];
 
   const sitemapEntries: MetadataRoute.Sitemap = [

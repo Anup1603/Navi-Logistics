@@ -2,7 +2,11 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
+import {
+  AnimatedSection,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/AnimatedComponents";
 import Image from "next/image";
 import {
   FileText,
@@ -21,7 +25,7 @@ const sections = [
     icon: FileText,
     title: "1. Acceptance of Terms",
     content:
-      "By accessing and using the services provided by Navi Logistics (\"Company,\" \"we,\" \"us,\" or \"our\"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.",
+      'By accessing and using the services provided by Navi Logistics ("Company," "we," "us," or "our"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.',
   },
   {
     icon: Truck,
@@ -33,7 +37,7 @@ const sections = [
       "Warehousing and storage solutions",
       "Supply chain management",
       "Express delivery services",
-      "Air and ocean freight",
+      "Air and rail freight",
       "Last mile delivery",
     ],
   },
@@ -110,7 +114,8 @@ export default function TermsPage() {
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
               <p className="text-lg md:text-xl text-white/80">
-                Please read these terms carefully before using our logistics services.
+                Please read these terms carefully before using our logistics
+                services.
               </p>
               <p className="text-sm text-white/60 mt-4">
                 Last updated: December 2024
@@ -142,7 +147,10 @@ export default function TermsPage() {
                         {section.list && (
                           <ul className="mt-4 space-y-2">
                             {section.list.map((item, i) => (
-                              <li key={i} className="flex items-start gap-2 text-muted-foreground">
+                              <li
+                                key={i}
+                                className="flex items-start gap-2 text-muted-foreground"
+                              >
                                 <span className="text-accent mt-1">•</span>
                                 <span>{item}</span>
                               </li>
@@ -169,17 +177,28 @@ export default function TermsPage() {
                         9. Contact Information
                       </h2>
                       <p className="text-muted-foreground mb-4">
-                        For questions about these Terms of Service, please contact us at:
+                        For questions about these Terms of Service, please
+                        contact us at:
                       </p>
                       <div className="bg-background p-4 rounded-lg">
                         <p className="font-semibold text-lg">Navi Logistics</p>
-                        <p className="text-muted-foreground">146 Foreshore Road, Shibpur</p>
-                        <p className="text-muted-foreground">Howrah, West Bengal - 711102</p>
-                        <p className="text-muted-foreground mt-2">
-                          Phone: <span className="text-foreground">+91 98300 32732</span>
+                        <p className="text-muted-foreground">
+                          146 Foreshore Road, Shibpur
                         </p>
                         <p className="text-muted-foreground">
-                          Email: <span className="text-foreground">contact@navilogistics.in</span>
+                          Howrah, West Bengal - 711101
+                        </p>
+                        <p className="text-muted-foreground mt-2">
+                          Phone:{" "}
+                          <span className="text-foreground">
+                            +91 98300 32732
+                          </span>
+                        </p>
+                        <p className="text-muted-foreground">
+                          Email:{" "}
+                          <span className="text-foreground">
+                            contact@navilogistics.in
+                          </span>
                         </p>
                       </div>
                     </div>
