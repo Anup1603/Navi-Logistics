@@ -8,7 +8,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AnimatedSection, AnimatedCard, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
+import {
+  AnimatedSection,
+  AnimatedCard,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/AnimatedComponents";
 import {
   MapPin,
   Phone,
@@ -24,7 +29,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    details: ["146 Foreshore Road, Shibpur", "Howrah (West Bengal) - 711102"],
+    details: ["146 Foreshore Road, Shibpur", "Howrah (West Bengal) - 711101"],
   },
   {
     icon: Phone,
@@ -46,19 +51,23 @@ const contactInfo = [
 const faqs = [
   {
     question: "How can I track my shipment?",
-    answer: "You can track your shipment using the tracking number provided in your confirmation email through our online tracking portal.",
+    answer:
+      "You can track your shipment using the tracking number provided in your confirmation email through our online tracking portal.",
   },
   {
     question: "What areas do you service?",
-    answer: "We provide services across India and have international shipping capabilities to over 50 countries worldwide.",
+    answer:
+      "We provide services across India, covering 23+ states including North, South, East, West, and North East regions.",
   },
   {
     question: "How do I get a quote?",
-    answer: "Fill out the contact form above or call us directly. Our team will provide a customized quote within 24 hours.",
+    answer:
+      "Fill out the contact form above or call us directly. Our team will provide a customized quote within 24 hours.",
   },
   {
     question: "Do you offer insurance for shipments?",
-    answer: "Yes, we offer comprehensive cargo insurance options for all shipments. Ask our team for details.",
+    answer:
+      "Yes, we offer comprehensive cargo insurance options for all shipments. Ask our team for details.",
   },
 ];
 
@@ -71,7 +80,9 @@ export default function ContactPage() {
     service: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -102,16 +113,22 @@ export default function ContactPage() {
         });
       } else {
         setStatus("error");
-        setErrorMessage(data.error || "Something went wrong. Please try again.");
+        setErrorMessage(
+          data.error || "Something went wrong. Please try again."
+        );
       }
     } catch {
       setStatus("error");
-      setErrorMessage("Network error. Please check your connection and try again.");
+      setErrorMessage(
+        "Network error. Please check your connection and try again."
+      );
     }
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -146,8 +163,8 @@ export default function ContactPage() {
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
               <p className="text-lg md:text-xl text-white/80">
-                Have questions or need a quote? Our team is ready to help you with 
-                all your logistics needs.
+                Have questions or need a quote? Our team is ready to help you
+                with all your logistics needs.
               </p>
             </AnimatedSection>
           </div>
@@ -163,7 +180,9 @@ export default function ContactPage() {
               <AnimatedSection>
                 <Card className="p-6 md:p-8 border-2">
                   <CardHeader className="p-0 mb-6">
-                    <CardTitle className="text-2xl">Send Us a Message</CardTitle>
+                    <CardTitle className="text-2xl">
+                      Send Us a Message
+                    </CardTitle>
                   </CardHeader>
                   <CardContent className="p-0">
                     {status === "success" ? (
@@ -171,11 +190,16 @@ export default function ContactPage() {
                         <div className="w-16 h-16 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-4">
                           <CheckCircle className="h-8 w-8 text-green-600" />
                         </div>
-                        <h3 className="text-xl font-bold mb-2">Message Sent Successfully!</h3>
+                        <h3 className="text-xl font-bold mb-2">
+                          Message Sent Successfully!
+                        </h3>
                         <p className="text-muted-foreground mb-6">
-                          Thank you for contacting us. We&apos;ll get back to you within 24 hours.
+                          Thank you for contacting us. We&apos;ll get back to
+                          you within 24 hours.
                         </p>
-                        <Button onClick={() => setStatus("idle")}>Send Another Message</Button>
+                        <Button onClick={() => setStatus("idle")}>
+                          Send Another Message
+                        </Button>
                       </div>
                     ) : (
                       <form onSubmit={handleSubmit} className="space-y-6">
@@ -237,12 +261,18 @@ export default function ContactPage() {
                             className="w-full px-3 py-2 border border-input rounded-md bg-background"
                           >
                             <option value="">Select a service</option>
-                            <option value="freight-shipping">Freight Shipping</option>
+                            <option value="3pl">3PL Services</option>
+                            <option value="express-delivery">
+                              Express Delivery
+                            </option>
                             <option value="warehousing">Warehousing</option>
-                            <option value="supply-chain">Supply Chain Management</option>
-                            <option value="express-delivery">Express Delivery</option>
+                            <option value="ftl">Full Truck Load (FTL)</option>
+                            <option value="ptl">Part Truck Load (PTL)</option>
+                            <option value="speed-trucking">
+                              Speed Trucking
+                            </option>
                             <option value="air-freight">Air Freight</option>
-                            <option value="ocean-freight">Ocean Freight</option>
+                            <option value="rail-freight">Rail Freight</option>
                             <option value="other">Other</option>
                           </select>
                         </div>
@@ -304,9 +334,14 @@ export default function ContactPage() {
                               <info.icon className="h-6 w-6 text-primary" />
                             </div>
                             <div>
-                              <h3 className="font-semibold mb-2">{info.title}</h3>
+                              <h3 className="font-semibold mb-2">
+                                {info.title}
+                              </h3>
                               {info.details.map((detail, i) => (
-                                <p key={i} className="text-muted-foreground text-sm">
+                                <p
+                                  key={i}
+                                  className="text-muted-foreground text-sm"
+                                >
                                   {detail}
                                 </p>
                               ))}
@@ -329,7 +364,7 @@ export default function ContactPage() {
           <AnimatedSection>
             <div className="aspect-[21/9] rounded-xl overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.1455078659915!2d88.33394987471196!3d22.571872234048775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277a1f0000001%3A0x3d4e9c7f0b0b1c8b!2s146%2C%20Foreshore%20Rd%2C%20Shibpur%2C%20Howrah%2C%20West%20Bengal%20711102!5e0!3m2!1sen!2sin!4v1702893600000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.1455078659915!2d88.33394987471196!3d22.571872234048775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277a1f0000001%3A0x3d4e9c7f0b0b1c8b!2s146%2C%20Foreshore%20Rd%2C%20Shibpur%2C%20Howrah%2C%20West%20Bengal%20711101!5e0!3m2!1sen!2sin!4v1702893600000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: "400px" }}
@@ -353,7 +388,10 @@ export default function ContactPage() {
             </h2>
           </AnimatedSection>
 
-          <StaggerContainer className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto" staggerDelay={0.1}>
+          <StaggerContainer
+            className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+            staggerDelay={0.1}
+          >
             {faqs.map((faq, index) => (
               <StaggerItem key={index}>
                 <AnimatedCard className="h-full">

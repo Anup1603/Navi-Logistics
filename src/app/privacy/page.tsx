@@ -2,7 +2,11 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
+import {
+  AnimatedSection,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/AnimatedComponents";
 import Image from "next/image";
 import {
   Database,
@@ -19,7 +23,8 @@ const sections = [
   {
     icon: Database,
     title: "1. Information We Collect",
-    content: "At Navi Logistics, we collect information that you provide directly to us to ensure seamless logistics services:",
+    content:
+      "At Navi Logistics, we collect information that you provide directly to us to ensure seamless logistics services:",
     list: [
       "Personal details: Name, email address, phone number",
       "Business information: Company name, GST number, addresses",
@@ -44,7 +49,8 @@ const sections = [
   {
     icon: Share2,
     title: "3. Information Sharing",
-    content: "We may share your information with trusted partners only when necessary:",
+    content:
+      "We may share your information with trusted partners only when necessary:",
     list: [
       "Delivery partners and carriers for order fulfillment",
       "Payment processors for secure transaction processing",
@@ -114,7 +120,8 @@ export default function PrivacyPage() {
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
               <p className="text-lg md:text-xl text-white/80">
-                Your privacy is important to us. Learn how we collect, use, and protect your information.
+                Your privacy is important to us. Learn how we collect, use, and
+                protect your information.
               </p>
               <p className="text-sm text-white/60 mt-4">
                 Last updated: December 2024
@@ -146,7 +153,10 @@ export default function PrivacyPage() {
                         {section.list && (
                           <ul className="mt-4 space-y-2">
                             {section.list.map((item, i) => (
-                              <li key={i} className="flex items-start gap-2 text-muted-foreground">
+                              <li
+                                key={i}
+                                className="flex items-start gap-2 text-muted-foreground"
+                              >
                                 <span className="text-accent mt-1">•</span>
                                 <span>{item}</span>
                               </li>
@@ -178,18 +188,31 @@ export default function PrivacyPage() {
                         8. Contact Us
                       </h2>
                       <p className="text-muted-foreground mb-4">
-                        If you have any questions about this Privacy Policy or wish to exercise your data rights, please contact us:
+                        If you have any questions about this Privacy Policy or
+                        wish to exercise your data rights, please contact us:
                       </p>
                       <div className="bg-background p-4 rounded-lg">
                         <p className="font-semibold text-lg">Navi Logistics</p>
-                        <p className="text-muted-foreground">Data Protection Officer</p>
-                        <p className="text-muted-foreground">146 Foreshore Road, Shibpur</p>
-                        <p className="text-muted-foreground">Howrah, West Bengal - 711102</p>
-                        <p className="text-muted-foreground mt-2">
-                          Phone: <span className="text-foreground">+91 98300 32732</span>
+                        <p className="text-muted-foreground">
+                          Data Protection Officer
                         </p>
                         <p className="text-muted-foreground">
-                          Email: <span className="text-foreground">contact@navilogistics.in</span>
+                          146 Foreshore Road, Shibpur
+                        </p>
+                        <p className="text-muted-foreground">
+                          Howrah, West Bengal - 711101
+                        </p>
+                        <p className="text-muted-foreground mt-2">
+                          Phone:{" "}
+                          <span className="text-foreground">
+                            +91 98300 32732
+                          </span>
+                        </p>
+                        <p className="text-muted-foreground">
+                          Email:{" "}
+                          <span className="text-foreground">
+                            contact@navilogistics.in
+                          </span>
                         </p>
                       </div>
                     </div>

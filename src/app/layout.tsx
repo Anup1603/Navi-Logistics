@@ -15,13 +15,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://navilogistics.in"),
   title: {
-    default: "Navi Logistics - Freight Shipping & Logistics Services in Howrah, Kolkata | West Bengal",
+    default:
+      "Navi Logistics - Freight Shipping & Logistics Services in Howrah, Kolkata | West Bengal",
     template: "%s | Navi Logistics - Logistics Company in India",
   },
   icons: {
-    icon: '/Navi Logistics.jpeg',
-    shortcut: '/Navi Logistics.jpeg',
-    apple: '/Navi Logistics.jpeg',
+    icon: "/Navi Logistics-Circular.png",
+    shortcut: "/Navi Logistics-Circular.png",
+    apple: "/Navi Logistics-Circular.png",
   },
   description:
     "Navi Logistics - Leading logistics company in Howrah, West Bengal offering freight shipping, warehousing, supply chain management & express delivery across Kolkata, Asansol, Durgapur, Siliguri, Bihar, Jharkhand, Odisha, Delhi NCR & Pan India. Call +91 98300 32732.",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     "Navi Logistics",
     "Navi Logistics Howrah",
     "Navi Logistics Kolkata",
-    
+
     // Service Keywords
     "logistics company",
     "freight shipping",
@@ -42,9 +43,9 @@ export const metadata: Metadata = {
     "cargo services",
     "truck transport",
     "air freight",
-    "ocean freight",
+    "rail freight",
     "last mile delivery",
-    
+
     // West Bengal Locations
     "logistics in Howrah",
     "logistics in Kolkata",
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
     "logistics Kharagpur",
     "West Bengal logistics",
     "West Bengal transport",
-    
+
     // Eastern India
     "logistics Bihar",
     "logistics Patna",
@@ -74,7 +75,7 @@ export const metadata: Metadata = {
     "logistics Guwahati",
     "logistics Sikkim",
     "logistics Gangtok",
-    
+
     // North India
     "logistics Delhi",
     "logistics Delhi NCR",
@@ -85,14 +86,14 @@ export const metadata: Metadata = {
     "logistics Kanpur",
     "logistics Varanasi",
     "logistics Haryana",
-    
+
     // Central India
     "logistics Madhya Pradesh",
     "logistics Bhopal",
     "logistics Indore",
     "logistics Chhattisgarh",
     "logistics Raipur",
-    
+
     // General
     "logistics company India",
     "best logistics company",
@@ -114,7 +115,8 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://navilogistics.in",
     siteName: "Navi Logistics",
-    title: "Navi Logistics - Best Logistics & Freight Company in Howrah, Kolkata",
+    title:
+      "Navi Logistics - Best Logistics & Freight Company in Howrah, Kolkata",
     description:
       "Trusted logistics partner for freight shipping, warehousing & supply chain in West Bengal, Bihar, Jharkhand, Odisha, Delhi NCR & across India. Get a free quote today!",
     images: [
@@ -156,7 +158,7 @@ export const metadata: Metadata = {
     "geo.region": "IN-WB",
     "geo.placename": "Howrah, West Bengal",
     "geo.position": "22.5718;88.3339",
-    "ICBM": "22.5718, 88.3339",
+    ICBM: "22.5718, 88.3339",
   },
 };
 

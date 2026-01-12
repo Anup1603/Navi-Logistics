@@ -17,7 +17,7 @@ export default function JsonLd() {
       streetAddress: "146 Foreshore Road, Shibpur",
       addressLocality: "Howrah",
       addressRegion: "West Bengal",
-      postalCode: "711102",
+      postalCode: "711101",
       addressCountry: "IN",
     },
     geo: {
@@ -106,7 +106,8 @@ export default function JsonLd() {
           itemOffered: {
             "@type": "Service",
             name: "Freight Shipping",
-            description: "Full truck load and less than truck load shipping services",
+            description:
+              "Full truck load and less than truck load shipping services",
           },
         },
         {
@@ -145,8 +146,8 @@ export default function JsonLd() {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Ocean Freight",
-            description: "Cost-effective sea shipping solutions",
+            name: "Rail Freight",
+            description: "Cost-effective rail transportation for bulk cargo",
           },
         },
       ],
