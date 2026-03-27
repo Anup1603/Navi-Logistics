@@ -14,7 +14,6 @@ import {
   GraduationCap,
   Handshake,
   Heart,
-  Instagram,
   Laptop,
   Lightbulb,
   Linkedin,
@@ -33,7 +32,6 @@ import {
   Target,
   Train,
   Truck,
-  Twitter,
   UserCog,
   Users,
   Utensils,
@@ -634,7 +632,7 @@ export const siteData = {
     legalName: "Navi Logistics Pvt Ltd",
     tagline: "Logistics Made Simple",
     foundedYear: 2016,
-    logo: "/Navi Logistics.jpeg",
+    logo: "/Navi Logistics-Circular.png",
     circularLogo: "/Navi Logistics-Circular.png",
     favicon: "/Navi Logistics Favicon.png",
     heroGrid: "/grid.svg",
@@ -676,14 +674,16 @@ export const siteData = {
     { name: "Contact", href: "/contact" },
   ] satisfies LinkItem[],
   socialLinks: [
-    { name: "Facebook", href: "https://facebook.com", icon: Facebook },
-    { name: "Twitter", href: "https://twitter.com", icon: Twitter },
+    {
+      name: "Facebook",
+      href: "https://www.facebook.com/navilogistics",
+      icon: Facebook,
+    },
     {
       name: "LinkedIn",
-      href: "https://www.linkedin.com/company/srslogistics9/",
+      href: "https://www.linkedin.com/company/navilogistics",
       icon: Linkedin,
     },
-    { name: "Instagram", href: "https://instagram.com", icon: Instagram },
   ] satisfies SocialLinkItem[],
   footer: {
     quickLinks: [
