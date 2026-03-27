@@ -16,15 +16,11 @@ import {
   Target,
   Eye,
   Heart,
-  Users,
   Award,
-  Globe,
-  Truck,
   ArrowRight,
   CheckCircle,
   Lightbulb,
   Handshake,
-  TrendingUp,
 } from "lucide-react";
 
 const values = [
@@ -182,7 +178,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection direction="left">
               <div className="relative">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden relative">
+                <div className="aspect-4/3 rounded-2xl overflow-hidden relative">
                   <Image
                     src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&h=600&fit=crop"
                     alt="Our Journey"
@@ -483,7 +479,7 @@ export default function AboutPage() {
                         sizes="(max-width: 768px) 50vw, 33vw"
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <CardContent className="p-5">
                       <h3 className="font-bold text-lg text-center">

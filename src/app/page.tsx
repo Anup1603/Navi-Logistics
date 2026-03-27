@@ -290,7 +290,7 @@ export default function HomePage() {
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                       <div className="absolute bottom-4 left-4">
                         <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
                           <service.icon className="h-6 w-6 text-accent-foreground" />

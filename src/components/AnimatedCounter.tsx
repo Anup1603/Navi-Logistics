@@ -19,7 +19,13 @@ export function AnimatedCounter({
   className = "",
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  // Use a forgiving viewport threshold so counters inside overlapping/mobile
+  // cards still start when they become visible near the screen edge.
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "0px 0px -10% 0px",
+    amount: 0.1,
+  });
   const [count, setCount] = useState(0);
 
   useEffect(() => {

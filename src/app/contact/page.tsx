@@ -362,7 +362,7 @@ export default function ContactPage() {
       <section className="py-12 bg-muted/30">
         <div className="container mx-auto">
           <AnimatedSection>
-            <div className="aspect-[21/9] rounded-xl overflow-hidden">
+            <div className="aspect-21/9 rounded-xl overflow-hidden">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.1455078659915!2d88.33394987471196!3d22.571872234048775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277a1f0000001%3A0x3d4e9c7f0b0b1c8b!2s146%2C%20Foreshore%20Rd%2C%20Shibpur%2C%20Howrah%2C%20West%20Bengal%20711101!5e0!3m2!1sen!2sin!4v1702893600000!5m2!1sen!2sin"
                 width="100%"

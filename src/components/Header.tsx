@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
-import { Menu, Truck, Phone } from "lucide-react";
+import { Menu, Phone } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const navigation = [

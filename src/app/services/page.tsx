@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import {
@@ -22,8 +22,6 @@ import {
   CheckCircle,
   Package,
   Zap,
-  Shield,
-  Settings,
   Building,
   ShoppingCart,
   Pill,
@@ -330,14 +328,14 @@ export default function ServicesPage() {
                   >
                     <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
                       <AnimatedCard>
-                        <div className="relative aspect-[16/10] rounded-2xl overflow-hidden">
+                        <div className="relative aspect-16/10 rounded-2xl overflow-hidden">
                           <Image
                             src={service.image}
                             alt={service.title}
                             fill
                             className="object-cover"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                          <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
                           <div className="absolute bottom-6 left-6">
                             <div className="w-14 h-14 rounded-xl bg-accent flex items-center justify-center">
                               <service.icon className="h-7 w-7 text-accent-foreground" />

@@ -57,7 +57,7 @@ cd navi-logistics
 npm install
 
 # Set up environment variables
-cp env.template .env
+cp .env.example .env
 # Edit .env with your Gmail App Password
 
 # Run development server
@@ -71,7 +71,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 To enable contact form emails:
 
 1. Create a [Gmail App Password](https://myaccount.google.com/apppasswords)
-2. Copy `env.template` to `.env`
+2. Copy `.env.example` to `.env`
 3. Add your credentials:
    ```
    EMAIL_USER=your-email@gmail.com
@@ -87,6 +87,18 @@ npm run build
 # Start production server
 npm start
 ```
+
+## Review Workflow
+
+```bash
+# Fast local review
+npm run review:quick
+
+# Release-level review
+npm run review:full
+```
+
+See `REVIEW_CHECKLIST.md` for the manual UI, SEO, and content review steps.
 
 ## 📍 Service Areas
 

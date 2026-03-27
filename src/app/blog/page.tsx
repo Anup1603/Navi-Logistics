@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { AnimatedSection, AnimatedCard, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
-import { Calendar, ArrowRight, Clock, User, Search } from "lucide-react";
+import { Calendar, ArrowRight, Clock, Search } from "lucide-react";
 
 const categories = [
   "All Posts",
@@ -175,14 +175,14 @@ export default function BlogPage() {
               <StaggerItem key={index}>
                 <AnimatedCard className="h-full">
                   <Card className="h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
-                    <div className="relative aspect-[16/9] overflow-hidden">
+                    <div className="relative aspect-video overflow-hidden">
                       <Image
                         src={post.image}
                         alt={post.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                       <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground">
                         {post.category}
                       </Badge>
@@ -242,7 +242,7 @@ export default function BlogPage() {
               <StaggerItem key={index}>
                 <AnimatedCard className="h-full">
                   <Card className="h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
-                    <div className="relative aspect-[16/10] overflow-hidden">
+                    <div className="relative aspect-16/10 overflow-hidden">
                       <Image
                         src={post.image}
                         alt={post.title}
