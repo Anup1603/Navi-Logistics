@@ -8,89 +8,10 @@ import {
   StaggerItem,
 } from "@/components/AnimatedComponents";
 import Image from "next/image";
-import {
-  Database,
-  Target,
-  Share2,
-  Lock,
-  UserCog,
-  Cookie,
-  RefreshCw,
-  Phone,
-} from "lucide-react";
+import { siteData } from "@/content/siteData";
+import { Phone } from "lucide-react";
 
-const sections = [
-  {
-    icon: Database,
-    title: "1. Information We Collect",
-    content:
-      "At Navi Logistics, we collect information that you provide directly to us to ensure seamless logistics services:",
-    list: [
-      "Personal details: Name, email address, phone number",
-      "Business information: Company name, GST number, addresses",
-      "Shipping details: Pickup and delivery addresses, package information",
-      "Payment data: Billing address, transaction history",
-      "Communication records: Support tickets, feedback, correspondence",
-    ],
-  },
-  {
-    icon: Target,
-    title: "2. How We Use Your Information",
-    content: "We use the information we collect for the following purposes:",
-    list: [
-      "Process and fulfill your logistics orders efficiently",
-      "Provide real-time tracking and delivery updates",
-      "Communicate about services, promotions, and important updates",
-      "Provide responsive customer support",
-      "Improve our services and develop new features",
-      "Ensure compliance with legal and regulatory obligations",
-    ],
-  },
-  {
-    icon: Share2,
-    title: "3. Information Sharing",
-    content:
-      "We may share your information with trusted partners only when necessary:",
-    list: [
-      "Delivery partners and carriers for order fulfillment",
-      "Payment processors for secure transaction processing",
-      "Warehousing partners for storage services",
-      "Government authorities when required by law",
-    ],
-    note: "We never sell your personal information to third parties for marketing purposes.",
-  },
-  {
-    icon: Lock,
-    title: "4. Data Security",
-    content:
-      "We implement robust security measures to protect your personal information including: SSL encryption for all data transmissions, secure servers with regular security audits, access controls limiting data access to authorized personnel only, and regular security training for our staff. While we strive to protect your information, no method of transmission over the Internet is 100% secure.",
-  },
-  {
-    icon: UserCog,
-    title: "5. Your Rights",
-    content: "You have the following rights regarding your personal data:",
-    list: [
-      "Access: Request a copy of your personal information",
-      "Correction: Update or correct inaccurate data",
-      "Deletion: Request deletion of your data (subject to legal requirements)",
-      "Portability: Receive your data in a structured format",
-      "Opt-out: Unsubscribe from marketing communications anytime",
-      "Complaint: Lodge a complaint with relevant data protection authorities",
-    ],
-  },
-  {
-    icon: Cookie,
-    title: "6. Cookies & Tracking",
-    content:
-      "Our website uses cookies and similar tracking technologies to enhance your browsing experience, analyze site traffic, and personalize content. You can manage cookie preferences through your browser settings. Essential cookies are required for site functionality, while analytics and marketing cookies can be disabled. We use Google Analytics to understand how visitors interact with our website.",
-  },
-  {
-    icon: RefreshCw,
-    title: "7. Policy Updates",
-    content:
-      "We may update this Privacy Policy from time to time to reflect changes in our practices or for legal, operational, or regulatory reasons. When we make significant changes, we will notify you via email or prominent notice on our website. We encourage you to review this policy periodically. Your continued use of our services after changes indicates your acceptance of the updated policy.",
-  },
-];
+const sections = siteData.privacyPage.sections;
 
 export default function PrivacyPage() {
   return (
@@ -150,9 +71,9 @@ export default function PrivacyPage() {
                         <p className="text-muted-foreground leading-relaxed">
                           {section.content}
                         </p>
-                        {section.list && (
+                        {"list" in section && section.list && (
                           <ul className="mt-4 space-y-2">
-                            {section.list.map((item, i) => (
+                            {section.list.map((item: string, i: number) => (
                               <li
                                 key={i}
                                 className="flex items-start gap-2 text-muted-foreground"
@@ -163,7 +84,7 @@ export default function PrivacyPage() {
                             ))}
                           </ul>
                         )}
-                        {section.note && (
+                        {"note" in section && section.note && (
                           <p className="mt-4 text-sm font-medium text-accent italic">
                             {section.note}
                           </p>

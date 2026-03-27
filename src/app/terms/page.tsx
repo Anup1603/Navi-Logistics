@@ -8,83 +8,10 @@ import {
   StaggerItem,
 } from "@/components/AnimatedComponents";
 import Image from "next/image";
-import {
-  FileText,
-  Truck,
-  UserCheck,
-  Shield,
-  CreditCard,
-  XCircle,
-  Scale,
-  RefreshCw,
-  Phone,
-} from "lucide-react";
+import { siteData } from "@/content/siteData";
+import { Phone } from "lucide-react";
 
-const sections = [
-  {
-    icon: FileText,
-    title: "1. Acceptance of Terms",
-    content:
-      'By accessing and using the services provided by Navi Logistics ("Company," "we," "us," or "our"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.',
-  },
-  {
-    icon: Truck,
-    title: "2. Our Services",
-    content:
-      "Navi Logistics provides comprehensive logistics and transportation services including:",
-    list: [
-      "Freight shipping (Full Truck Load & Less Than Truck Load)",
-      "Warehousing and storage solutions",
-      "Supply chain management",
-      "Express delivery services",
-      "Air and rail freight",
-      "Last mile delivery",
-    ],
-  },
-  {
-    icon: UserCheck,
-    title: "3. User Responsibilities",
-    content: "When using our services, you agree to:",
-    list: [
-      "Provide accurate and complete information for shipments",
-      "Properly package and label all goods as per guidelines",
-      "Comply with all applicable laws and regulations",
-      "Not ship prohibited or restricted items",
-      "Pay all applicable fees and charges on time",
-      "Maintain valid contact information for delivery updates",
-    ],
-  },
-  {
-    icon: Shield,
-    title: "4. Liability & Insurance",
-    content:
-      "While we take utmost care in handling your shipments, our liability is limited as per industry standards and applicable laws. We strongly recommend customers obtain appropriate insurance coverage for valuable shipments. Claims must be filed within 7 days of delivery for visible damage and 14 days for concealed damage.",
-  },
-  {
-    icon: CreditCard,
-    title: "5. Payment Terms",
-    content:
-      "Payment terms are agreed upon at the time of service booking. We accept various payment methods including bank transfer, credit cards, and UPI. Invoices are due within 30 days unless otherwise agreed. Late payments may incur additional charges at 1.5% per month.",
-  },
-  {
-    icon: XCircle,
-    title: "6. Cancellation Policy",
-    content:
-      "Cancellation policies vary based on the type of service booked. For standard shipments, cancellation before pickup is free of charge. Cancellation after pickup may incur fees based on distance covered. Express services may have different terms. Please contact our customer service team for specific cancellation terms.",
-  },
-  {
-    icon: Scale,
-    title: "7. Dispute Resolution",
-    content:
-      "Any disputes arising from these terms or our services shall be resolved through arbitration in Howrah, West Bengal, India, in accordance with the Arbitration and Conciliation Act, 1996. The language of arbitration shall be English. Courts in Howrah shall have exclusive jurisdiction.",
-  },
-  {
-    icon: RefreshCw,
-    title: "8. Changes to Terms",
-    content:
-      "We reserve the right to modify these terms at any time. Material changes will be notified via email or website announcement. Continued use of our services after changes constitutes acceptance of the modified terms. We encourage you to review these terms periodically.",
-  },
-];
+const sections = siteData.termsPage.sections;
 
 export default function TermsPage() {
   return (
@@ -144,9 +71,9 @@ export default function TermsPage() {
                         <p className="text-muted-foreground leading-relaxed">
                           {section.content}
                         </p>
-                        {section.list && (
+                        {"list" in section && section.list && (
                           <ul className="mt-4 space-y-2">
-                            {section.list.map((item, i) => (
+                            {section.list.map((item: string, i: number) => (
                               <li
                                 key={i}
                                 className="flex items-start gap-2 text-muted-foreground"

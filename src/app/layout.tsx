@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TopProgressBar } from "@/components/TopProgressBar";
 import JsonLd from "@/components/JsonLd";
+import { siteData } from "@/content/siteData";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -13,98 +14,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://navilogistics.in"),
-  title: {
-    default:
-      "Navi Logistics - Freight Shipping & Logistics Services in Howrah, Kolkata | West Bengal",
-    template: "%s | Navi Logistics - Logistics Company in India",
-  },
+  metadataBase: new URL(siteData.seo.siteUrl),
+  title: siteData.seo.title,
   icons: {
-    icon: "/Navi Logistics-Circular.png",
-    shortcut: "/Navi Logistics-Circular.png",
-    apple: "/Navi Logistics-Circular.png",
+    icon: siteData.brand.circularLogo,
+    shortcut: siteData.brand.circularLogo,
+    apple: siteData.brand.circularLogo,
   },
-  description:
-    "Navi Logistics - Leading logistics company in Howrah, West Bengal offering freight shipping, warehousing, supply chain management & express delivery across Kolkata, Asansol, Durgapur, Siliguri, Bihar, Jharkhand, Odisha, Delhi NCR & Pan India. Call +91 98300 32732.",
-  keywords: [
-    // Brand Keywords
-    "Navi Logistics",
-    "Navi Logistics Howrah",
-    "Navi Logistics Kolkata",
-
-    // Service Keywords
-    "logistics company",
-    "freight shipping",
-    "freight services",
-    "warehousing services",
-    "supply chain management",
-    "transportation services",
-    "express delivery",
-    "cargo services",
-    "truck transport",
-    "air freight",
-    "rail freight",
-    "last mile delivery",
-
-    // West Bengal Locations
-    "logistics in Howrah",
-    "logistics in Kolkata",
-    "logistics in Shibpur",
-    "transport company Howrah",
-    "freight services Kolkata",
-    "logistics Asansol",
-    "logistics Durgapur",
-    "logistics Bardhaman",
-    "logistics 24 Parganas",
-    "logistics Hooghly",
-    "logistics Siliguri",
-    "logistics Kharagpur",
-    "West Bengal logistics",
-    "West Bengal transport",
-
-    // Eastern India
-    "logistics Bihar",
-    "logistics Patna",
-    "logistics Jharkhand",
-    "logistics Ranchi",
-    "logistics Jamshedpur",
-    "logistics Odisha",
-    "logistics Bhubaneswar",
-    "logistics Cuttack",
-    "logistics Assam",
-    "logistics Guwahati",
-    "logistics Sikkim",
-    "logistics Gangtok",
-
-    // North India
-    "logistics Delhi",
-    "logistics Delhi NCR",
-    "logistics Gurugram",
-    "logistics Noida",
-    "logistics Uttar Pradesh",
-    "logistics Lucknow",
-    "logistics Kanpur",
-    "logistics Varanasi",
-    "logistics Haryana",
-
-    // Central India
-    "logistics Madhya Pradesh",
-    "logistics Bhopal",
-    "logistics Indore",
-    "logistics Chhattisgarh",
-    "logistics Raipur",
-
-    // General
-    "logistics company India",
-    "best logistics company",
-    "reliable logistics partner",
-    "affordable freight services",
-    "same day delivery",
-    "pan India logistics",
-  ],
-  authors: [{ name: "Navi Logistics" }],
-  creator: "Navi Logistics",
-  publisher: "Navi Logistics Pvt Ltd",
+  description: siteData.seo.description,
+  keywords: [...siteData.seo.keywords],
+  authors: [{ name: siteData.brand.name }],
+  creator: siteData.brand.name,
+  publisher: siteData.brand.legalName,
   formatDetection: {
     email: true,
     address: true,
@@ -113,27 +34,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://navilogistics.in",
-    siteName: "Navi Logistics",
-    title:
-      "Navi Logistics - Best Logistics & Freight Company in Howrah, Kolkata",
-    description:
-      "Trusted logistics partner for freight shipping, warehousing & supply chain in West Bengal, Bihar, Jharkhand, Odisha, Delhi NCR & across India. Get a free quote today!",
+    url: siteData.seo.siteUrl,
+    siteName: siteData.brand.name,
+    title: siteData.seo.openGraph.title,
+    description: siteData.seo.openGraph.description,
     images: [
       {
-        url: "/og-image.jpg",
+        url: siteData.brand.ogImage,
         width: 1200,
         height: 630,
-        alt: "Navi Logistics - Your Trusted Logistics Partner in India",
+        alt: siteData.seo.openGraph.imageAlt,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Navi Logistics - Freight & Logistics Services | Howrah, Kolkata",
-    description:
-      "Leading logistics company offering freight, warehousing & delivery services across India. Contact: +91 98300 32732",
-    images: ["/og-image.jpg"],
+    title: siteData.seo.twitter.title,
+    description: siteData.seo.twitter.description,
+    images: [siteData.brand.ogImage],
   },
   robots: {
     index: true,
@@ -147,7 +65,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://navilogistics.in",
+    canonical: siteData.seo.siteUrl,
   },
   verification: {
     // Add your Google Search Console verification code here
@@ -157,8 +75,8 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "IN-WB",
     "geo.placename": "Howrah, West Bengal",
-    "geo.position": "22.5718;88.3339",
-    ICBM: "22.5718, 88.3339",
+    "geo.position": siteData.company.geo.position,
+    ICBM: siteData.company.geo.icbm,
   },
 };
 

@@ -3,82 +3,13 @@ import {
   Mail,
   Phone,
   MapPin,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-
-const quickLinks = [
-  { name: "About Us", href: "/about" },
-  { name: "Our Services", href: "/services" },
-  { name: "News & Updates", href: "/news" },
-  { name: "Blog", href: "/blog" },
-  { name: "Careers", href: "/careers" },
-  { name: "Contact Us", href: "/contact" },
-];
-
-const services = [
-  { name: "3PL Services", href: "/services#3pl" },
-  { name: "Express Delivery", href: "/services#express" },
-  { name: "Warehousing", href: "/services#warehousing" },
-  { name: "Full Truck Load", href: "/services#ftl" },
-  { name: "Part Truck Load", href: "/services#ptl" },
-  { name: "Air Freight", href: "/services#air-freight" },
-];
-
-const serviceAreas = {
-  "Eastern India": [
-    "Howrah",
-    "Kolkata",
-    "Patna",
-    "Ranchi",
-    "Bhubaneswar",
-    "Guwahati",
-    "Siliguri",
-  ],
-  "North India": [
-    "Delhi NCR",
-    "Lucknow",
-    "Kanpur",
-    "Jaipur",
-    "Chandigarh",
-    "Noida",
-    "Gurugram",
-  ],
-  "West India": [
-    "Mumbai",
-    "Pune",
-    "Ahmedabad",
-    "Surat",
-    "Nagpur",
-    "Indore",
-    "Bhopal",
-  ],
-  "South India": [
-    "Chennai",
-    "Bengaluru",
-    "Hyderabad",
-    "Kochi",
-    "Coimbatore",
-    "Visakhapatnam",
-  ],
-};
-
-const socialLinks = [
-  { name: "Facebook", href: "https://facebook.com", icon: Facebook },
-  { name: "Twitter", href: "https://twitter.com", icon: Twitter },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/company/srslogistics9/",
-    icon: Linkedin,
-  },
-  { name: "Instagram", href: "https://instagram.com", icon: Instagram },
-];
+import { siteData } from "@/content/siteData";
 
 export function Footer() {
+  const { brand, company, footer, socialLinks } = siteData;
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -88,8 +19,8 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3">
               <div className="rounded-xl overflow-hidden group-hover:scale-110 transition-transform">
                 <Image
-                  src="/Navi Logistics.jpeg"
-                  alt="Navi Logistics Logo"
+                  src={brand.logo}
+                  alt={`${brand.name} Logo`}
                   width={50}
                   height={50}
                   className="w-auto h-auto"
@@ -97,21 +28,21 @@ export function Footer() {
               </div>
               <div className="flex flex-col">
                 <div>
-                  <span className="text-xl font-bold">Navi</span>
+                  <span className="text-xl font-bold">
+                    {brand.name.split(" ")[0]}
+                  </span>
                   <span className="text-xl font-bold text-accent">
                     {" "}
-                    Logistics
+                    {brand.name.split(" ").slice(1).join(" ")}
                   </span>
                 </div>
                 <span className="text-[10px] font-medium text-primary-foreground/70 tracking-wider uppercase">
-                  Logistics Made Simple
+                  {brand.tagline}
                 </span>
               </div>
             </Link>
             <p className="text-primary-foreground/80 leading-relaxed">
-              Your trusted partner in logistics and supply chain solutions.
-              Delivering excellence across India with speed, reliability, and
-              care since 2016.
+              {company.description}
             </p>
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
@@ -133,7 +64,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
+              {footer.quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
@@ -150,7 +81,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-6">Our Services</h3>
             <ul className="space-y-3">
-              {services.map((service) => (
+              {footer.services.map((service) => (
                 <li key={service.name}>
                   <Link
                     href={service.href}
@@ -170,36 +101,36 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 mt-0.5 text-accent shrink-0" />
                 <address className="text-primary-foreground/80 not-italic">
-                  146 Foreshore Road, Shibpur,
+                  {company.addressLine1},
                   <br />
-                  Howrah, West Bengal - 711101
+                  {company.addressLine2}
                 </address>
               </li>
               <li>
                 <Link
-                  href="tel:+919830032732"
+                  href={`tel:${company.phonePrimary.replace(/\s+/g, "")}`}
                   className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
                 >
                   <Phone className="h-5 w-5 text-accent" />
-                  +91 98300 32732
+                  {company.phonePrimary}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="tel:+918337091474"
+                  href={`tel:${company.phoneSecondary.replace(/\s+/g, "")}`}
                   className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
                 >
                   <Phone className="h-5 w-5 text-accent" />
-                  +91 83370 91474
+                  {company.phoneSecondary}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="mailto:contact@navilogistics.in"
+                  href={`mailto:${company.email}`}
                   className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
                 >
                   <Mail className="h-5 w-5 text-accent" />
-                  contact@navilogistics.in
+                  {company.email}
                 </Link>
               </li>
             </ul>
@@ -212,7 +143,7 @@ export function Footer() {
         <div className="mb-10">
           <h3 className="text-lg font-semibold mb-6">Service Areas</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {Object.entries(serviceAreas).map(([region, cities]) => (
+            {Object.entries(footer.serviceAreas).map(([region, cities]) => (
               <div key={region}>
                 <h4 className="text-accent font-medium mb-2">{region}</h4>
                 <ul className="space-y-1">
@@ -229,10 +160,7 @@ export function Footer() {
             ))}
           </div>
           <p className="text-primary-foreground/60 text-sm mt-4">
-            Serving 23+ states including: West Bengal, Bihar, Jharkhand, Odisha,
-            Assam, Uttar Pradesh, Rajasthan, Madhya Pradesh, Chhattisgarh,
-            Gujarat, Maharashtra, Tamil Nadu, Karnataka, Telangana, Kerala &
-            more across India.
+            {company.serviceAreasSummary}
           </p>
         </div>
 

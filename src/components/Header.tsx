@@ -8,21 +8,13 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Menu, Phone } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "About Us", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "News", href: "/news" },
-  { name: "Blog", href: "/blog" },
-  { name: "Careers", href: "/careers" },
-  { name: "Contact", href: "/contact" },
-];
+import { siteData } from "@/content/siteData";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { brand, company, navigation } = siteData;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,8 +45,8 @@ export function Header() {
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
             <div className="rounded-xl overflow-hidden group-hover:scale-110 transition-transform">
               <Image 
-                src="/Navi Logistics.jpeg" 
-                alt="Navi Logistics Logo" 
+                src={brand.logo} 
+                alt={`${brand.name} Logo`} 
                 width={40} 
                 height={40}
                 className="w-10 h-10 sm:w-[50px] sm:h-[50px]"
@@ -62,11 +54,16 @@ export function Header() {
             </div>
             <div className="flex flex-col">
               <div>
-                <span className="text-sm sm:text-lg md:text-xl font-bold text-foreground">Navi</span>
-                <span className="text-sm sm:text-lg md:text-xl font-bold text-gradient"> Logistics</span>
+                <span className="text-sm sm:text-lg md:text-xl font-bold text-foreground">
+                  {brand.name.split(" ")[0]}
+                </span>
+                <span className="text-sm sm:text-lg md:text-xl font-bold text-gradient">
+                  {" "}
+                  {brand.name.split(" ").slice(1).join(" ")}
+                </span>
               </div>
               <span className="text-[8px] sm:text-[10px] md:text-xs font-medium text-muted-foreground tracking-wider uppercase">
-                Logistics Made Simple
+                {brand.tagline}
               </span>
             </div>
           </Link>
@@ -90,9 +87,9 @@ export function Header() {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link href="tel:+919830032732" className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <Link href={`tel:${company.phonePrimary.replace(/\s+/g, "")}`} className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               <Phone className="h-4 w-4" />
-              <span className="hidden xl:inline">+91 98300 32732</span>
+              <span className="hidden xl:inline">{company.phonePrimary}</span>
             </Link>
             <Button asChild className="bg-accent hover:bg-accent/90 text-black font-semibold">
               <Link href="/contact">Get a Quote</Link>
@@ -117,14 +114,14 @@ export function Header() {
                   <Link href="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
                     <div className="rounded-xl overflow-hidden">
                       <Image 
-                        src="/Navi Logistics.jpeg" 
-                        alt="Navi Logistics Logo" 
+                        src={brand.logo} 
+                        alt={`${brand.name} Logo`} 
                         width={40} 
                         height={40}
                         className="w-10 h-10"
                       />
                     </div>
-                    <span className="text-base sm:text-lg font-bold">Navi Logistics</span>
+                    <span className="text-base sm:text-lg font-bold">{brand.name}</span>
                   </Link>
                 </div>
                 <nav className="flex flex-col gap-1 flex-1">
@@ -145,11 +142,11 @@ export function Header() {
                 </nav>
                 <div className="pt-4 border-t space-y-3">
                   <Link 
-                    href="tel:+919830032732" 
+                    href={`tel:${company.phonePrimary.replace(/\s+/g, "")}`} 
                     className="flex items-center gap-3 px-4 py-2 text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <Phone className="h-5 w-5" />
-                    <span className="text-sm">+91 98300 32732</span>
+                    <span className="text-sm">{company.phonePrimary}</span>
                   </Link>
                   <Button asChild className="w-full bg-accent hover:bg-accent/90 text-black font-semibold">
                     <Link href="/contact" onClick={() => setIsOpen(false)}>Get a Quote</Link>

@@ -8,84 +8,11 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { AnimatedSection, AnimatedCard, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { Calendar, ArrowRight, Clock, Search } from "lucide-react";
+import { siteData } from "@/content/siteData";
 
-const categories = [
-  "All News",
-  "Company Updates",
-  "Industry News",
-  "Partnerships",
-  "Sustainability",
-];
-
-const featuredNews = [
-  {
-    title: "Navi Logistics Expands Operations to Southeast Asia",
-    excerpt: "We are excited to announce the expansion of our logistics network to cover major markets in Southeast Asia, including Singapore, Thailand, and Vietnam.",
-    date: "December 15, 2024",
-    category: "Company Updates",
-    image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&h=500&fit=crop",
-    readTime: "5 min read",
-  },
-  {
-    title: "Partnership with Green Fleet Initiative",
-    excerpt: "Joining forces with the Green Fleet Initiative to reduce our carbon footprint by 40% by 2030 through electric vehicles and sustainable practices.",
-    date: "December 10, 2024",
-    category: "Sustainability",
-    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&h=500&fit=crop",
-    readTime: "4 min read",
-  },
-];
-
-const news = [
-  {
-    title: "New Warehousing Facility Opens in Mumbai",
-    excerpt: "Our newest 200,000 sq ft facility is now operational, featuring state-of-the-art automation and climate control systems.",
-    date: "December 8, 2024",
-    category: "Company Updates",
-    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&h=400&fit=crop",
-    readTime: "3 min read",
-  },
-  {
-    title: "AI-Powered Route Optimization Launch",
-    excerpt: "Introducing our new AI-driven route optimization system that reduces delivery times by up to 25% and fuel consumption by 15%.",
-    date: "December 5, 2024",
-    category: "Industry News",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop",
-    readTime: "4 min read",
-  },
-  {
-    title: "Strategic Partnership with E-Commerce Giants",
-    excerpt: "Announcing partnerships with leading e-commerce platforms to provide seamless fulfillment solutions across India.",
-    date: "December 1, 2024",
-    category: "Partnerships",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
-    readTime: "3 min read",
-  },
-  {
-    title: "Industry Recognition: Best Logistics Provider 2024",
-    excerpt: "Navi Logistics receives the prestigious 'Best Logistics Provider' award at the Supply Chain Excellence Awards 2024.",
-    date: "November 28, 2024",
-    category: "Company Updates",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop",
-    readTime: "2 min read",
-  },
-  {
-    title: "Cold Chain Network Expansion",
-    excerpt: "Expanding our temperature-controlled logistics network to serve pharmaceutical and food industries better.",
-    date: "November 25, 2024",
-    category: "Industry News",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
-    readTime: "4 min read",
-  },
-  {
-    title: "Employee Excellence Program Launch",
-    excerpt: "Introducing a new training and development program aimed at upskilling our workforce for future challenges.",
-    date: "November 20, 2024",
-    category: "Company Updates",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop",
-    readTime: "3 min read",
-  },
-];
+const categories = siteData.newsPage.categories;
+const featuredNews = siteData.newsPage.featuredNews;
+const news = siteData.newsPage.news;
 
 export default function NewsPage() {
   return (
@@ -185,7 +112,7 @@ export default function NewsPage() {
                       </h3>
                       <p className="text-muted-foreground mb-4">{item.excerpt}</p>
                       <Link
-                        href="#"
+                        href={`/news/${item.slug}`}
                         className="inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
                       >
                         Read More <ArrowRight className="ml-1 h-4 w-4" />
@@ -238,7 +165,7 @@ export default function NewsPage() {
                       </h3>
                       <p className="text-muted-foreground text-sm line-clamp-2 mb-3">{item.excerpt}</p>
                       <Link
-                        href="#"
+                        href={`/news/${item.slug}`}
                         className="inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
                       >
                         Read More <ArrowRight className="ml-1 h-4 w-4" />

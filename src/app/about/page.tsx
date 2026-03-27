@@ -12,110 +12,18 @@ import {
   StaggerContainer,
   StaggerItem,
 } from "@/components/AnimatedComponents";
+import { siteData } from "@/content/siteData";
 import {
   Target,
   Eye,
-  Heart,
-  Award,
   ArrowRight,
   CheckCircle,
-  Lightbulb,
-  Handshake,
 } from "lucide-react";
 
-const values = [
-  {
-    icon: Award,
-    title: "Excellence",
-    description:
-      "We strive for excellence in every shipment, every interaction, and every solution we deliver.",
-  },
-  {
-    icon: Heart,
-    title: "Integrity",
-    description:
-      "Honesty and transparency are the foundations of our relationships with clients and partners.",
-  },
-  {
-    icon: Handshake,
-    title: "Collaboration",
-    description:
-      "We work together with our clients, understanding their needs to deliver tailored solutions.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    description:
-      "Continuously improving our processes and technology to stay ahead of industry trends.",
-  },
-];
-
-const milestones = [
-  {
-    year: "2016",
-    title: "Foundation",
-    description:
-      "Started as SRS Logistics, building a strong foundation in regional transport in Howrah.",
-  },
-  {
-    year: "2018",
-    title: "Technology Upgrade",
-    description:
-      "Implemented real-time tracking and modern fleet management systems.",
-  },
-  {
-    year: "2020",
-    title: "Rebranding",
-    description:
-      "Evolved into Navi Logistics Pvt. Ltd., marking a shift towards modernization.",
-  },
-  {
-    year: "2022",
-    title: "Regional Expansion",
-    description: "Expanded operations across West Bengal and Eastern India.",
-  },
-  {
-    year: "2024",
-    title: "Pan-India Network",
-    description: "Established presence in 23+ states across India.",
-  },
-  {
-    year: "2026",
-    title: "Continued Growth",
-    description: "Serving 500+ clients with 8 specialized logistics services.",
-  },
-];
-
-const team = [
-  {
-    name: "Ram Vinay Sharma",
-    role: "Director",
-    bio: "With over 20 years of experience in the logistics industry, Mr. Sharma brings unparalleled expertise and strategic vision to Navi Logistics. His leadership has been pivotal in transitioning the company from a regional player to a national force.",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
-  },
-  {
-    name: "Rohit Kumar Sharma",
-    role: "Logistics Consultant",
-    bio: "With over 5 years of hands-on experience in logistics and specialized tax expertise from Ernst & Young, Rohit brings a unique multidisciplinary perspective to Navi Logistics.",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-  },
-  {
-    name: "Saptarshi Sadhukhan",
-    role: "Cluster Head",
-    bio: "An experienced logistics professional with over 10 years of expertise. Has worked with Reinvent Agrochain, Pranik Logistics, Moeving Urban Tech, Mahindra Logistics, and Velocity Express.",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-  },
-];
-
-const stats = [
-  { value: 9, suffix: "+", label: "Years of Experience" },
-  { value: 500, suffix: "+", label: "Happy Clients" },
-  { value: 100, suffix: "+", label: "Team Members" },
-  { value: 23, suffix: "+", label: "States Covered" },
-];
+const values = siteData.about.values;
+const milestones = siteData.about.milestones;
+const team = siteData.about.team;
+const stats = siteData.about.stats;
 
 export default function AboutPage() {
   return (
