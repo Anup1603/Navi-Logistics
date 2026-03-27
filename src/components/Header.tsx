@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
-import { Menu, Phone } from "lucide-react";
+import { ArrowRight, MapPin, Menu, Phone, Truck } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { siteData } from "@/content/siteData";
 
@@ -15,6 +15,18 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const { brand, company, navigation } = siteData;
+  const primaryActions = [
+    {
+      label: "Call Us",
+      href: `tel:${company.phonePrimary.replace(/\s+/g, "")}`,
+      icon: Phone,
+    },
+    {
+      label: "Get a Quote",
+      href: "/contact",
+      icon: ArrowRight,
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +41,10 @@ export function Header() {
       return pathname === "/";
     }
     return pathname.startsWith(href);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -104,15 +120,18 @@ export function Header() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] sm:w-[320px] p-0 overflow-y-auto">
+            <SheetContent
+              side="right"
+              className="w-[340px] max-w-[92vw] border-l border-border/70 bg-background/98 p-0 overflow-y-auto sm:w-[380px] md:w-[420px]"
+            >
               <VisuallyHidden>
                 <SheetTitle>Navigation Menu</SheetTitle>
                 <SheetDescription>Main navigation links for Navi Logistics</SheetDescription>
               </VisuallyHidden>
-              <div className="flex flex-col h-full p-5 sm:p-6">
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b">
-                  <Link href="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
-                    <div className="rounded-xl overflow-hidden">
+              <div className="flex min-h-full flex-col">
+                <div className="border-b bg-muted/30 px-5 pb-5 pt-10 sm:px-6">
+                  <Link href="/" className="flex items-center gap-3" onClick={closeMenu}>
+                    <div className="rounded-xl overflow-hidden border border-border/60 bg-background p-1 shadow-sm">
                       <Image 
                         src={brand.logo} 
                         alt={`${brand.name} Logo`} 
@@ -121,36 +140,124 @@ export function Header() {
                         className="w-10 h-10"
                       />
                     </div>
-                    <span className="text-base sm:text-lg font-bold">{brand.name}</span>
+                    <div className="flex flex-col">
+                      <div>
+                        <span className="text-base font-bold text-foreground">
+                          {brand.name.split(" ")[0]}
+                        </span>
+                        <span className="text-base font-bold text-gradient">
+                          {" "}
+                          {brand.name.split(" ").slice(1).join(" ")}
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+                        {brand.tagline}
+                      </span>
+                    </div>
                   </Link>
+
+                  <div className="mt-5 rounded-2xl border border-border/70 bg-background p-4 shadow-sm">
+                    <div className="flex items-start gap-3">
+                      <div className="rounded-xl bg-accent/15 p-2 text-accent">
+                        <Truck className="h-5 w-5" />
+                      </div>
+                      <div className="space-y-2">
+                        <p className="text-sm font-semibold text-foreground">
+                          Freight support on the go
+                        </p>
+                        <p className="text-sm leading-6 text-muted-foreground">
+                          Open the menu, jump to any section, or contact our team directly without hunting for the right page.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mt-4 flex flex-wrap gap-2 text-xs text-muted-foreground">
+                      <span className="rounded-full bg-muted px-3 py-1">
+                        Pan India
+                      </span>
+                      <span className="rounded-full bg-muted px-3 py-1">
+                        Warehousing
+                      </span>
+                      <span className="rounded-full bg-muted px-3 py-1">
+                        Express Delivery
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <nav className="flex flex-col gap-1 flex-1">
-                  {navigation.map((item) => (
+
+                <div className="flex flex-1 flex-col px-5 py-5 sm:px-6">
+                  <div className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                    Navigate
+                  </div>
+                  <nav className="flex flex-col gap-2">
+                    {navigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        onClick={closeMenu}
+                        className={`group flex items-center justify-between rounded-2xl border px-4 py-3.5 text-base font-medium transition-all ${
+                          isActive(item.href)
+                            ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                            : "border-border/70 bg-background hover:border-accent/40 hover:bg-muted"
+                        }`}
+                      >
+                        <span>{item.name}</span>
+                        <ArrowRight
+                          className={`h-4 w-4 transition-transform ${
+                            isActive(item.href)
+                              ? "translate-x-0"
+                              : "text-muted-foreground group-hover:translate-x-1"
+                          }`}
+                        />
+                      </Link>
+                    ))}
+                  </nav>
+
+                  <div className="mt-6 rounded-2xl border border-border/70 bg-muted/25 p-4">
+                    <div className="mb-3 flex items-start gap-3">
+                      <MapPin className="mt-0.5 h-5 w-5 text-accent" />
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">
+                          Based in Howrah, serving across India
+                        </p>
+                        <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                          {company.addressLine1}, {company.addressLine2}
+                        </p>
+                      </div>
+                    </div>
                     <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-                        isActive(item.href)
-                          ? "bg-primary text-primary-foreground"
-                          : "hover:bg-muted"
-                      }`}
+                      href={`tel:${company.phonePrimary.replace(/\s+/g, "")}`}
+                      onClick={closeMenu}
+                      className="flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-accent"
                     >
-                      {item.name}
+                      <Phone className="h-4 w-4" />
+                      {company.phonePrimary}
                     </Link>
-                  ))}
-                </nav>
-                <div className="pt-4 border-t space-y-3">
-                  <Link 
-                    href={`tel:${company.phonePrimary.replace(/\s+/g, "")}`} 
-                    className="flex items-center gap-3 px-4 py-2 text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <Phone className="h-5 w-5" />
-                    <span className="text-sm">{company.phonePrimary}</span>
-                  </Link>
-                  <Button asChild className="w-full bg-accent hover:bg-accent/90 text-black font-semibold">
-                    <Link href="/contact" onClick={() => setIsOpen(false)}>Get a Quote</Link>
-                  </Button>
+                  </div>
+
+                  <div className="mt-auto border-t pt-5">
+                    <div className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                      Quick Actions
+                    </div>
+                    <div className="grid grid-cols-2 gap-3">
+                      {primaryActions.map((action) => (
+                        <Button
+                          key={action.label}
+                          asChild
+                          variant={action.label === "Get a Quote" ? "default" : "outline"}
+                          className={
+                            action.label === "Get a Quote"
+                              ? "bg-accent text-black font-semibold hover:bg-accent/90"
+                              : "font-semibold"
+                          }
+                        >
+                          <Link href={action.href} onClick={closeMenu}>
+                            <action.icon className="h-4 w-4" />
+                            {action.label}
+                          </Link>
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </SheetContent>
