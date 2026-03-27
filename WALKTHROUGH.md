@@ -99,7 +99,7 @@ Footer displays organized service areas by region for SEO and user reference.
 ### API & Config
 - `src/app/api/contact/route.ts` - Email API
 - `src/app/sitemap.ts` - SEO sitemap
-- `env.template` - Environment variables
+- `.env.example` - Environment variables
 
 ---
 
@@ -125,7 +125,7 @@ Footer displays organized service areas by region for SEO and user reference.
 npm install
 
 # Configure email (copy and edit)
-cp env.template .env
+cp .env.example .env
 # Add your Gmail App Password to .env
 
 # Run development server

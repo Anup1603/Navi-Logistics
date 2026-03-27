@@ -18,142 +18,20 @@ import {
   StaggerContainer,
   StaggerItem,
 } from "@/components/AnimatedComponents";
+import { siteData } from "@/content/siteData";
 import {
-  Truck,
-  Warehouse,
   Globe,
-  Clock,
-  Shield,
   ArrowRight,
   Package,
-  Plane,
-  Train,
   CheckCircle,
   Star,
   Users,
-  MapPin,
-  Boxes,
-  Zap,
 } from "lucide-react";
 
-const services = [
-  {
-    icon: Boxes,
-    title: "3PL Services",
-    description:
-      "End-to-end third-party logistics including warehousing, fulfillment, and distribution management.",
-    href: "/services#3pl",
-    image:
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
-  },
-  {
-    icon: Clock,
-    title: "Express Delivery",
-    description:
-      "Time-critical shipments delivered with speed and precision across India.",
-    href: "/services#express",
-    image:
-      "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&h=400&fit=crop",
-  },
-  {
-    icon: Warehouse,
-    title: "Warehousing",
-    description:
-      "State-of-the-art storage facilities with inventory management and fulfillment services.",
-    href: "/services#warehousing",
-    image:
-      "https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&h=400&fit=crop",
-  },
-  {
-    icon: Truck,
-    title: "Full Truck Load",
-    description:
-      "Dedicated trucks for large shipments with direct routes and faster delivery times.",
-    href: "/services#ftl",
-    image:
-      "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&h=400&fit=crop",
-  },
-  {
-    icon: Package,
-    title: "Part Truck Load",
-    description:
-      "Cost-effective shared trucking solutions for smaller shipments across India.",
-    href: "/services#ptl",
-    image:
-      "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&h=400&fit=crop",
-  },
-  {
-    icon: Zap,
-    title: "Speed Trucking",
-    description:
-      "Premium time-definite trucking for urgent cargo with guaranteed delivery windows.",
-    href: "/services#speed-trucking",
-    image:
-      "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop",
-  },
-  {
-    icon: Plane,
-    title: "Air Freight",
-    description:
-      "Fast and reliable domestic air cargo services for time-sensitive shipments.",
-    href: "/services#air-freight",
-    image:
-      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop",
-  },
-  {
-    icon: Train,
-    title: "Rail Freight",
-    description:
-      "Cost-effective rail transportation for bulk cargo across India's extensive rail network.",
-    href: "/services#rail",
-    image:
-      "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&h=400&fit=crop",
-  },
-];
-
-const stats = [
-  { value: 9, suffix: "+", label: "Years Experience" },
-  { value: 50, suffix: "K+", label: "Deliveries Monthly" },
-  { value: 23, suffix: "+", label: "States Covered" },
-  { value: 99.5, suffix: "%", label: "On-Time Delivery" },
-];
-
-const features = [
-  { icon: Shield, text: "Fully Insured Shipments" },
-  { icon: Clock, text: "24/7 Customer Support" },
-  { icon: MapPin, text: "Real-Time Tracking" },
-  { icon: CheckCircle, text: "Quality Guaranteed" },
-];
-
-const testimonials = [
-  {
-    name: "Rajesh Kumar",
-    role: "CEO, TechCorp Industries",
-    content:
-      "Navi Logistics has transformed our supply chain. Their reliability and professionalism are unmatched.",
-    rating: 5,
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-  },
-  {
-    name: "Priya Patel",
-    role: "Operations Manager, GlobalTrade",
-    content:
-      "We've been partners for 5 years. Their express delivery service is exceptional - always on time!",
-    rating: 5,
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
-  },
-  {
-    name: "Amit Singh",
-    role: "Founder, E-Commerce Plus",
-    content:
-      "The warehousing solutions helped us scale 3x. Professional team and cutting-edge technology.",
-    rating: 5,
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-  },
-];
+const services = siteData.home.services;
+const stats = siteData.home.stats;
+const features = siteData.home.features;
+const testimonials = siteData.home.testimonials;
 
 export default function HomePage() {
   return (
@@ -290,7 +168,7 @@ export default function HomePage() {
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                       <div className="absolute bottom-4 left-4">
                         <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
                           <service.icon className="h-6 w-6 text-accent-foreground" />

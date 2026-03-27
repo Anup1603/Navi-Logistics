@@ -14,62 +14,16 @@ import {
   StaggerContainer,
   StaggerItem,
 } from "@/components/AnimatedComponents";
+import { siteData } from "@/content/siteData";
 import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
   Send,
   CheckCircle,
   AlertCircle,
   Loader2,
 } from "lucide-react";
 
-const contactInfo = [
-  {
-    icon: MapPin,
-    title: "Visit Us",
-    details: ["146 Foreshore Road, Shibpur", "Howrah (West Bengal) - 711101"],
-  },
-  {
-    icon: Phone,
-    title: "Call Us",
-    details: ["+91 98300 32732", "+91 83370 91474"],
-  },
-  {
-    icon: Mail,
-    title: "Email Us",
-    details: ["contact@navilogistics.in"],
-  },
-  {
-    icon: Clock,
-    title: "Working Hours",
-    details: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 9:00 AM - 1:00 PM"],
-  },
-];
-
-const faqs = [
-  {
-    question: "How can I track my shipment?",
-    answer:
-      "You can track your shipment using the tracking number provided in your confirmation email through our online tracking portal.",
-  },
-  {
-    question: "What areas do you service?",
-    answer:
-      "We provide services across India, covering 23+ states including North, South, East, West, and North East regions.",
-  },
-  {
-    question: "How do I get a quote?",
-    answer:
-      "Fill out the contact form above or call us directly. Our team will provide a customized quote within 24 hours.",
-  },
-  {
-    question: "Do you offer insurance for shipments?",
-    answer:
-      "Yes, we offer comprehensive cargo insurance options for all shipments. Ask our team for details.",
-  },
-];
+const contactInfo = siteData.contactPage.contactInfo;
+const faqs = siteData.contactPage.faqs;
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -261,19 +215,11 @@ export default function ContactPage() {
                             className="w-full px-3 py-2 border border-input rounded-md bg-background"
                           >
                             <option value="">Select a service</option>
-                            <option value="3pl">3PL Services</option>
-                            <option value="express-delivery">
-                              Express Delivery
-                            </option>
-                            <option value="warehousing">Warehousing</option>
-                            <option value="ftl">Full Truck Load (FTL)</option>
-                            <option value="ptl">Part Truck Load (PTL)</option>
-                            <option value="speed-trucking">
-                              Speed Trucking
-                            </option>
-                            <option value="air-freight">Air Freight</option>
-                            <option value="rail-freight">Rail Freight</option>
-                            <option value="other">Other</option>
+                            {siteData.contactPage.serviceOptions.map((option) => (
+                              <option key={option.value} value={option.value}>
+                                {option.label}
+                              </option>
+                            ))}
                           </select>
                         </div>
                         <div className="space-y-2">
@@ -362,7 +308,7 @@ export default function ContactPage() {
       <section className="py-12 bg-muted/30">
         <div className="container mx-auto">
           <AnimatedSection>
-            <div className="aspect-[21/9] rounded-xl overflow-hidden">
+            <div className="aspect-21/9 rounded-xl overflow-hidden">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.1455078659915!2d88.33394987471196!3d22.571872234048775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277a1f0000001%3A0x3d4e9c7f0b0b1c8b!2s146%2C%20Foreshore%20Rd%2C%20Shibpur%2C%20Howrah%2C%20West%20Bengal%20711101!5e0!3m2!1sen!2sin!4v1702893600000!5m2!1sen!2sin"
                 width="100%"

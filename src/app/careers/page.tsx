@@ -7,67 +7,18 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { AnimatedSection, AnimatedCard, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
+import { siteData } from "@/content/siteData";
 import {
-  Heart,
-  GraduationCap,
-  Clock,
-  Users,
-  Dumbbell,
-  Plane,
   ArrowRight,
   MapPin,
   Briefcase,
   Building,
 } from "lucide-react";
 
-const benefits = [
-  { icon: Heart, title: "Health & Wellness", description: "Comprehensive health insurance for you and your family, plus wellness programs." },
-  { icon: GraduationCap, title: "Learning & Development", description: "Continuous learning opportunities, training programs, and career growth paths." },
-  { icon: Clock, title: "Work-Life Balance", description: "Flexible working hours, remote work options, and generous leave policies." },
-  { icon: Users, title: "Great Culture", description: "Collaborative environment, team events, and a supportive community." },
-  { icon: Dumbbell, title: "Fitness Benefits", description: "Gym memberships, fitness challenges, and wellness allowances." },
-  { icon: Plane, title: "Travel Perks", description: "Travel allowances, company trips, and relocation assistance." },
-];
-
-const testimonials = [
-  {
-    name: "Rahul Verma",
-    role: "Senior Logistics Manager",
-    content: "Working at Navi Logistics has been an incredible journey. The growth opportunities and supportive team make it a great place to build a career.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-    years: "4 years at Navi",
-  },
-  {
-    name: "Anita Sharma",
-    role: "Operations Coordinator",
-    content: "The work-life balance here is exceptional. I love how the company invests in employee development and values our contributions.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
-    years: "2 years at Navi",
-  },
-  {
-    name: "Vikram Singh",
-    role: "Fleet Manager",
-    content: "The technology and innovation here keep me motivated. Every day brings new challenges and opportunities to learn.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-    years: "5 years at Navi",
-  },
-];
-
-const positions = [
-  { title: "Senior Logistics Manager", department: "Operations", location: "Howrah, WB", type: "Full-time" },
-  { title: "Fleet Operations Coordinator", department: "Fleet Management", location: "Mumbai, MH", type: "Full-time" },
-  { title: "Warehouse Supervisor", department: "Warehousing", location: "Delhi, NCR", type: "Full-time" },
-  { title: "Customer Success Manager", department: "Customer Service", location: "Bangalore, KA", type: "Full-time" },
-  { title: "Software Engineer", department: "Technology", location: "Remote", type: "Full-time" },
-  { title: "Data Analyst", department: "Analytics", location: "Howrah, WB", type: "Full-time" },
-];
-
-const stats = [
-  { value: 1000, suffix: "+", label: "Employees" },
-  { value: 50, suffix: "+", label: "Cities" },
-  { value: 4.8, suffix: "/5", label: "Employee Rating" },
-  { value: 95, suffix: "%", label: "Retention Rate" },
-];
+const benefits = siteData.careersPage.benefits;
+const testimonials = siteData.careersPage.testimonials;
+const positions = siteData.careersPage.positions;
+const stats = siteData.careersPage.stats;
 
 export default function CareersPage() {
   return (

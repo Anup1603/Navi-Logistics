@@ -1,143 +1,115 @@
-import Link from "next/link";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
-} from "lucide-react";
-import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-
-const quickLinks = [
-  { name: "About Us", href: "/about" },
-  { name: "Our Services", href: "/services" },
-  { name: "News & Updates", href: "/news" },
-  { name: "Blog", href: "/blog" },
-  { name: "Careers", href: "/careers" },
-  { name: "Contact Us", href: "/contact" },
-];
-
-const services = [
-  { name: "3PL Services", href: "/services#3pl" },
-  { name: "Express Delivery", href: "/services#express" },
-  { name: "Warehousing", href: "/services#warehousing" },
-  { name: "Full Truck Load", href: "/services#ftl" },
-  { name: "Part Truck Load", href: "/services#ptl" },
-  { name: "Air Freight", href: "/services#air-freight" },
-];
-
-const serviceAreas = {
-  "Eastern India": [
-    "Howrah",
-    "Kolkata",
-    "Patna",
-    "Ranchi",
-    "Bhubaneswar",
-    "Guwahati",
-    "Siliguri",
-  ],
-  "North India": [
-    "Delhi NCR",
-    "Lucknow",
-    "Kanpur",
-    "Jaipur",
-    "Chandigarh",
-    "Noida",
-    "Gurugram",
-  ],
-  "West India": [
-    "Mumbai",
-    "Pune",
-    "Ahmedabad",
-    "Surat",
-    "Nagpur",
-    "Indore",
-    "Bhopal",
-  ],
-  "South India": [
-    "Chennai",
-    "Bengaluru",
-    "Hyderabad",
-    "Kochi",
-    "Coimbatore",
-    "Visakhapatnam",
-  ],
-};
-
-const socialLinks = [
-  { name: "Facebook", href: "https://facebook.com", icon: Facebook },
-  { name: "Twitter", href: "https://twitter.com", icon: Twitter },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/company/srslogistics9/",
-    icon: Linkedin,
-  },
-  { name: "Instagram", href: "https://instagram.com", icon: Instagram },
-];
+import Link from "next/link";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { siteData } from "@/content/siteData";
 
 export function Footer() {
+  const { brand, company, footer, socialLinks } = siteData;
+  const serviceAreaEntries = Object.entries(footer.serviceAreas);
+
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
+      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mb-10 rounded-3xl border border-white/[0.12] bg-white/[0.06] p-6 backdrop-blur-sm lg:p-8">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-2xl space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent/90">
+                Ready To Ship Smarter?
+              </p>
+              <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+                Let&apos;s plan your next freight movement with a team that
+                knows the lane.
+              </h2>
+              <p className="text-sm leading-7 text-primary-foreground/75 md:text-base">
+                Get in touch for a quote, service consultation, or support with
+                a custom logistics requirement.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Button
+                asChild
+                className="bg-accent font-semibold text-black hover:bg-accent/90"
+              >
+                <Link href="/contact">
+                  Get a Quote
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white"
+              >
+                <Link href={`tel:${company.phonePrimary.replace(/\s+/g, "")}`}>
+                  Call Now
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.35fr_0.8fr_0.8fr_1fr]">
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-3">
-              <div className="rounded-xl overflow-hidden group-hover:scale-110 transition-transform">
+              <div className="overflow-hidden rounded-lg border border-white/10 bg-white/5 p-0.5">
                 <Image
-                  src="/Navi Logistics.jpeg"
-                  alt="Navi Logistics Logo"
+                  src={brand.logo}
+                  alt={`${brand.name} Logo`}
                   width={50}
                   height={50}
-                  className="w-auto h-auto"
+                  className="h-20 w-20"
                 />
               </div>
-              <div className="flex flex-col">
+              <div className="space-y-1">
                 <div>
-                  <span className="text-xl font-bold">Navi</span>
-                  <span className="text-xl font-bold text-accent">
+                  <span className="text-lg font-bold text-primary-foreground">
+                    {brand.name.split(" ")[0]}
+                  </span>
+                  <span className="text-lg font-bold text-gradient">
                     {" "}
-                    Logistics
+                    {brand.name.split(" ").slice(1).join(" ")}
                   </span>
                 </div>
-                <span className="text-[10px] font-medium text-primary-foreground/70 tracking-wider uppercase">
-                  Logistics Made Simple
+                <span className="text-[11px] font-medium uppercase tracking-wider text-primary-foreground/70">
+                  {brand.tagline}
                 </span>
               </div>
             </Link>
-            <p className="text-primary-foreground/80 leading-relaxed">
-              Your trusted partner in logistics and supply chain solutions.
-              Delivering excellence across India with speed, reliability, and
-              care since 2016.
+            <p className="max-w-md leading-relaxed text-primary-foreground/80">
+              {company.description}
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3">
               {socialLinks.map((social) => (
                 <Link
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-accent hover:text-black transition-all duration-200"
+                  className="flex items-center gap-2 rounded-full border border-white/10 bg-primary-foreground/10 px-4 py-2 text-sm text-primary-foreground/80 transition-all duration-200 hover:border-accent hover:bg-accent hover:text-black"
                   aria-label={social.name}
                 >
-                  <social.icon className="h-5 w-5" />
+                  <social.icon className="h-4 w-4" />
+                  <span>{social.name}</span>
                 </Link>
               ))}
             </div>
+            <p className="text-sm leading-7 text-primary-foreground/65">
+              Serving businesses across India with freight movement,
+              warehousing, and supply chain support tailored to operational
+              realities.
+            </p>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
+            <h3 className="mb-6 text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
+              {footer.quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-primary-foreground/80 hover:text-accent transition-colors"
+                    className="text-primary-foreground/80 transition-colors hover:text-accent"
                   >
                     {link.name}
                   </Link>
@@ -146,15 +118,14 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Our Services</h3>
+            <h3 className="mb-6 text-lg font-semibold">Our Services</h3>
             <ul className="space-y-3">
-              {services.map((service) => (
+              {footer.services.map((service) => (
                 <li key={service.name}>
                   <Link
                     href={service.href}
-                    className="text-primary-foreground/80 hover:text-accent transition-colors"
+                    className="text-primary-foreground/80 transition-colors hover:text-accent"
                   >
                     {service.name}
                   </Link>
@@ -163,94 +134,118 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Contact Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 mt-0.5 text-accent shrink-0" />
-                <address className="text-primary-foreground/80 not-italic">
-                  146 Foreshore Road, Shibpur,
+            <h3 className="mb-6 text-lg font-semibold">Contact Us</h3>
+            <div className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                <address className="not-italic text-primary-foreground/80">
+                  {company.addressLine1},
                   <br />
-                  Howrah, West Bengal - 711101
+                  {company.addressLine2}
                 </address>
-              </li>
-              <li>
+              </div>
+              <div>
                 <Link
-                  href="tel:+919830032732"
-                  className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
+                  href={`tel:${company.phonePrimary.replace(/\s+/g, "")}`}
+                  className="flex items-center gap-3 text-primary-foreground/80 transition-colors hover:text-accent"
                 >
                   <Phone className="h-5 w-5 text-accent" />
-                  +91 98300 32732
+                  {company.phonePrimary}
                 </Link>
-              </li>
-              <li>
+              </div>
+              <div>
                 <Link
-                  href="tel:+918337091474"
-                  className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
+                  href={`tel:${company.phoneSecondary.replace(/\s+/g, "")}`}
+                  className="flex items-center gap-3 text-primary-foreground/80 transition-colors hover:text-accent"
                 >
                   <Phone className="h-5 w-5 text-accent" />
-                  +91 83370 91474
+                  {company.phoneSecondary}
                 </Link>
-              </li>
-              <li>
+              </div>
+              <div>
                 <Link
-                  href="mailto:contact@navilogistics.in"
-                  className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
+                  href={`mailto:${company.email}`}
+                  className="flex items-center gap-3 text-primary-foreground/80 transition-colors hover:text-accent"
                 >
                   <Mail className="h-5 w-5 text-accent" />
-                  contact@navilogistics.in
+                  {company.email}
                 </Link>
-              </li>
-            </ul>
+              </div>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white"
+              >
+                <Link href="/contact">Request Logistics Support</Link>
+              </Button>
+            </div>
           </div>
         </div>
 
-        {/* Service Areas Section - SEO */}
         <Separator className="my-10 bg-primary-foreground/20" />
 
         <div className="mb-10">
-          <h3 className="text-lg font-semibold mb-6">Service Areas</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {Object.entries(serviceAreas).map(([region, cities]) => (
-              <div key={region}>
-                <h4 className="text-accent font-medium mb-2">{region}</h4>
-                <ul className="space-y-1">
-                  {cities.map((city) => (
-                    <li
+          <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h3 className="text-lg font-semibold">Service Areas</h3>
+              <p className="mt-2 max-w-3xl text-sm leading-7 text-primary-foreground/65">
+                {company.serviceAreasSummary}
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="text-sm font-medium text-accent transition-colors hover:text-accent/90"
+            >
+              Ask about your route
+            </Link>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {serviceAreaEntries.map(([region, cities]) => (
+              <div
+                key={region}
+                className="rounded-2xl border border-white/10 bg-white/5 p-5"
+              >
+                <h4 className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent/90">
+                  {region}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {cities.slice(0, 4).map((city) => (
+                    <span
                       key={city}
-                      className="text-primary-foreground/70 text-sm"
+                      className="rounded-full bg-white/[0.08] px-3 py-1 text-xs text-primary-foreground/75"
                     >
                       {city}
-                    </li>
+                    </span>
                   ))}
-                </ul>
+                  {cities.length > 4 ? (
+                    <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-primary-foreground/60">
+                      +{cities.length - 4} more
+                    </span>
+                  ) : null}
+                </div>
               </div>
             ))}
           </div>
-          <p className="text-primary-foreground/60 text-sm mt-4">
-            Serving 23+ states including: West Bengal, Bihar, Jharkhand, Odisha,
-            Assam, Uttar Pradesh, Rajasthan, Madhya Pradesh, Chhattisgarh,
-            Gujarat, Maharashtra, Tamil Nadu, Karnataka, Telangana, Kerala &
-            more across India.
-          </p>
         </div>
 
         <Separator className="mb-10 bg-primary-foreground/20" />
 
-        {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/60">
+        <div className="flex flex-col gap-4 text-sm text-primary-foreground/60 md:flex-row md:items-center md:justify-between">
           <p>
-            © {new Date().getFullYear()} Navi Logistics. All rights reserved.
+            © {new Date().getFullYear()} {brand.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6">
             <Link
               href="/privacy"
-              className="hover:text-accent transition-colors"
+              className="text-accent transition-colors hover:text-accent/90"
             >
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-accent transition-colors">
+            <Link
+              href="/terms"
+              className="text-accent transition-colors hover:text-accent/90"
+            >
               Terms of Service
             </Link>
           </div>

@@ -7,102 +7,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { AnimatedSection, AnimatedCard, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
-import { Calendar, ArrowRight, Clock, User, Search } from "lucide-react";
+import { Calendar, ArrowRight, Clock, Search } from "lucide-react";
+import { siteData } from "@/content/siteData";
 
-const categories = [
-  "All Posts",
-  "Supply Chain",
-  "Technology",
-  "Industry Trends",
-  "Best Practices",
-  "Case Studies",
-];
-
-const featuredPosts = [
-  {
-    title: "The Future of Logistics: AI and Machine Learning in Supply Chain",
-    excerpt: "Discover how artificial intelligence and machine learning are revolutionizing logistics operations, from predictive analytics to autonomous vehicles.",
-    date: "December 12, 2024",
-    author: "Rajiv Sharma",
-    authorImage: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face",
-    category: "Technology",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=500&fit=crop",
-    readTime: "8 min read",
-  },
-  {
-    title: "Sustainable Logistics: Building a Greener Supply Chain",
-    excerpt: "Learn about the latest strategies for reducing carbon footprint in logistics and how companies are achieving sustainability goals.",
-    date: "December 8, 2024",
-    author: "Priya Patel",
-    authorImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face",
-    category: "Industry Trends",
-    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&h=500&fit=crop",
-    readTime: "6 min read",
-  },
-];
-
-const posts = [
-  {
-    title: "10 Ways to Optimize Your Warehouse Operations",
-    excerpt: "Practical tips and strategies for improving warehouse efficiency and reducing operational costs.",
-    date: "December 5, 2024",
-    author: "Amit Kumar",
-    authorImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-    category: "Best Practices",
-    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&h=400&fit=crop",
-    readTime: "5 min read",
-  },
-  {
-    title: "Last Mile Delivery: Challenges and Solutions",
-    excerpt: "Exploring the complexities of last-mile delivery and innovative solutions that are transforming the industry.",
-    date: "December 1, 2024",
-    author: "Sneha Gupta",
-    authorImage: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face",
-    category: "Supply Chain",
-    image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&h=400&fit=crop",
-    readTime: "7 min read",
-  },
-  {
-    title: "E-Commerce Logistics: Meeting Customer Expectations",
-    excerpt: "How logistics providers are adapting to meet the rising demands of e-commerce consumers.",
-    date: "November 28, 2024",
-    author: "Rajiv Sharma",
-    authorImage: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face",
-    category: "Industry Trends",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
-    readTime: "6 min read",
-  },
-  {
-    title: "Cold Chain Logistics: Ensuring Product Integrity",
-    excerpt: "Understanding the importance of temperature-controlled logistics for perishable goods.",
-    date: "November 25, 2024",
-    author: "Priya Patel",
-    authorImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face",
-    category: "Best Practices",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
-    readTime: "5 min read",
-  },
-  {
-    title: "Case Study: Transforming Supply Chain for a Major Retailer",
-    excerpt: "How Navi Logistics helped a leading retailer reduce delivery times by 40% and cut costs by 25%.",
-    date: "November 22, 2024",
-    author: "Amit Kumar",
-    authorImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-    category: "Case Studies",
-    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&h=400&fit=crop",
-    readTime: "10 min read",
-  },
-  {
-    title: "The Role of IoT in Modern Logistics",
-    excerpt: "Exploring how Internet of Things technology is enabling smarter, more connected supply chains.",
-    date: "November 18, 2024",
-    author: "Sneha Gupta",
-    authorImage: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face",
-    category: "Technology",
-    image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600&h=400&fit=crop",
-    readTime: "7 min read",
-  },
-];
+const categories = siteData.blogPage.categories;
+const featuredPosts = siteData.blogPage.featuredPosts;
+const posts = siteData.blogPage.posts;
 
 export default function BlogPage() {
   return (
@@ -175,14 +85,14 @@ export default function BlogPage() {
               <StaggerItem key={index}>
                 <AnimatedCard className="h-full">
                   <Card className="h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
-                    <div className="relative aspect-[16/9] overflow-hidden">
+                    <div className="relative aspect-video overflow-hidden">
                       <Image
                         src={post.image}
                         alt={post.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                       <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground">
                         {post.category}
                       </Badge>
@@ -215,7 +125,7 @@ export default function BlogPage() {
                           <span className="text-sm font-medium">{post.author}</span>
                         </div>
                         <Link
-                          href="#"
+                          href={`/blog/${post.slug}`}
                           className="inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
                         >
                           Read <ArrowRight className="ml-1 h-4 w-4" />
@@ -242,7 +152,7 @@ export default function BlogPage() {
               <StaggerItem key={index}>
                 <AnimatedCard className="h-full">
                   <Card className="h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
-                    <div className="relative aspect-[16/10] overflow-hidden">
+                    <div className="relative aspect-16/10 overflow-hidden">
                       <Image
                         src={post.image}
                         alt={post.title}
@@ -281,7 +191,7 @@ export default function BlogPage() {
                           <span className="text-xs">{post.author}</span>
                         </div>
                         <Link
-                          href="#"
+                          href={`/blog/${post.slug}`}
                           className="inline-flex items-center text-xs font-medium text-accent"
                         >
                           Read <ArrowRight className="ml-1 h-3 w-3" />

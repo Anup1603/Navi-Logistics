@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { siteData } from "@/content/siteData";
 
 interface ContactFormData {
   name: string;
@@ -76,7 +77,7 @@ export async function POST(request: NextRequest) {
 
       const mailOptions = {
         from: `"Navi Logistics" <${process.env.EMAIL_USER}>`,
-        to: "akcs1618@gmail.com",
+        to: siteData.company.inquiryRecipientEmail,
         subject: `📩 New Contact Request – ${body.name}`,
         ...(body.email && { replyTo: body.email }),
         html: `

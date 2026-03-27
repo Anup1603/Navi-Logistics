@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import {
@@ -12,239 +12,16 @@ import {
   StaggerContainer,
   StaggerItem,
 } from "@/components/AnimatedComponents";
+import { siteData } from "@/content/siteData";
 import {
-  Truck,
-  Warehouse,
-  Clock,
-  Plane,
-  Train,
   ArrowRight,
   CheckCircle,
-  Package,
-  Zap,
-  Shield,
-  Settings,
-  Building,
-  ShoppingCart,
-  Pill,
-  Car,
-  Laptop,
-  Utensils,
-  Boxes,
 } from "lucide-react";
 
-const services = [
-  {
-    id: "3pl",
-    icon: Boxes,
-    title: "3PL Services",
-    description:
-      "End-to-end third-party logistics for seamless supply chain management.",
-    image:
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=500&fit=crop",
-    features: [
-      "Complete supply chain management",
-      "Order fulfillment services",
-      "Inventory optimization",
-      "Distribution network management",
-      "Returns processing",
-      "Value-added services",
-    ],
-    details:
-      "Our 3PL services provide comprehensive logistics solutions, allowing you to focus on your core business while we handle warehousing, fulfillment, and distribution across India.",
-  },
-  {
-    id: "express",
-    icon: Clock,
-    title: "Express Delivery",
-    description:
-      "Time-critical deliveries with guaranteed speed and reliability.",
-    image:
-      "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&h=500&fit=crop",
-    features: [
-      "Same-day delivery options",
-      "Next-day guaranteed service",
-      "Time-definite deliveries",
-      "Priority handling",
-      "Real-time updates",
-      "Proof of delivery",
-    ],
-    details:
-      "When time is of the essence, our express delivery service ensures your shipments reach their destination with speed and precision across 23+ states in India.",
-  },
-  {
-    id: "warehousing",
-    icon: Warehouse,
-    title: "Warehousing & Storage",
-    description:
-      "State-of-the-art warehousing facilities with advanced inventory management.",
-    image:
-      "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&h=500&fit=crop",
-    features: [
-      "Modern storage facilities",
-      "Climate-controlled zones",
-      "Real-time inventory tracking",
-      "Pick and pack services",
-      "Cross-docking solutions",
-      "Kitting and assembly",
-    ],
-    details:
-      "Our warehousing solutions are designed to optimize your supply chain. With strategically located facilities across India and advanced WMS, we ensure your inventory is always where you need it.",
-  },
-  {
-    id: "ftl",
-    icon: Truck,
-    title: "Full Truck Load (FTL)",
-    description: "Dedicated trucks for large shipments with direct routes.",
-    image:
-      "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&h=500&fit=crop",
-    features: [
-      "Dedicated vehicle allocation",
-      "Direct point-to-point delivery",
-      "Faster transit times",
-      "Reduced handling damage",
-      "GPS tracking for all shipments",
-      "Flexible scheduling",
-    ],
-    details:
-      "Our Full Truck Load services provide dedicated trucks for your large shipments, ensuring faster delivery with minimal handling across India's road network.",
-  },
-  {
-    id: "ptl",
-    icon: Package,
-    title: "Part Truck Load (PTL)",
-    description: "Cost-effective shared trucking for smaller shipments.",
-    image:
-      "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&h=500&fit=crop",
-    features: [
-      "Economical shipping rates",
-      "Consolidated cargo handling",
-      "Regular scheduled departures",
-      "Hub-and-spoke network",
-      "Tracking and visibility",
-      "Flexible load sizes",
-    ],
-    details:
-      "Part Truck Load service offers cost-effective shipping for smaller consignments by sharing truck space with other cargo, without compromising on reliability.",
-  },
-  {
-    id: "speed-trucking",
-    icon: Zap,
-    title: "Speed Trucking",
-    description: "Premium time-definite trucking for urgent cargo.",
-    image:
-      "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&h=500&fit=crop",
-    features: [
-      "Guaranteed delivery windows",
-      "Priority route allocation",
-      "24/7 operations",
-      "Dedicated driver teams",
-      "Real-time GPS tracking",
-      "Premium handling",
-    ],
-    details:
-      "Speed Trucking is our premium service for urgent cargo that requires guaranteed delivery times. We allocate the best routes and dedicated teams for your time-critical shipments.",
-  },
-  {
-    id: "air-freight",
-    icon: Plane,
-    title: "Air Freight",
-    description: "Fast and reliable domestic air cargo services.",
-    image:
-      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=500&fit=crop",
-    features: [
-      "Domestic airport coverage",
-      "Charter services available",
-      "Dangerous goods handling",
-      "Temperature-sensitive cargo",
-      "Airport-to-door service",
-      "Express air options",
-    ],
-    details:
-      "Our air freight solutions connect you to cities across India with speed and reliability. We handle everything from documentation to delivery for your time-sensitive shipments.",
-  },
-  {
-    id: "rail",
-    icon: Train,
-    title: "Rail Freight",
-    description: "Cost-effective rail transportation for bulk cargo.",
-    image:
-      "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=800&h=500&fit=crop",
-    features: [
-      "Container rail services",
-      "Bulk cargo handling",
-      "Pan-India rail network",
-      "Multi-modal integration",
-      "Cost-effective for bulk",
-      "Eco-friendly transport",
-    ],
-    details:
-      "Leverage India's extensive rail network for cost-effective transportation of bulk cargo. Our rail freight services offer an eco-friendly alternative for long-distance shipping.",
-  },
-];
-
-const process = [
-  {
-    step: "01",
-    title: "Consult",
-    description: "Discuss your logistics needs with our experts",
-  },
-  {
-    step: "02",
-    title: "Plan",
-    description: "Develop a customized logistics strategy",
-  },
-  {
-    step: "03",
-    title: "Execute",
-    description: "Implement the solution with precision",
-  },
-  {
-    step: "04",
-    title: "Monitor",
-    description: "Track and optimize performance continuously",
-  },
-];
-
-const industries = [
-  {
-    icon: ShoppingCart,
-    name: "E-Commerce",
-    description: "Fast fulfillment for online retailers",
-  },
-  {
-    icon: Pill,
-    name: "Healthcare",
-    description: "Temperature-controlled pharma logistics",
-  },
-  {
-    icon: Car,
-    name: "Automotive",
-    description: "Just-in-time delivery for manufacturers",
-  },
-  {
-    icon: Laptop,
-    name: "Technology",
-    description: "Secure handling for electronics",
-  },
-  {
-    icon: Utensils,
-    name: "Food & Beverage",
-    description: "Cold chain logistics solutions",
-  },
-  {
-    icon: Building,
-    name: "Manufacturing",
-    description: "Industrial supply chain solutions",
-  },
-];
-
-const stats = [
-  { value: 50, suffix: "K+", label: "Deliveries Monthly" },
-  { value: 23, suffix: "+", label: "States Covered" },
-  { value: 99.5, suffix: "%", label: "On-Time Rate" },
-  { value: 24, suffix: "/7", label: "Support Available" },
-];
+const services = siteData.servicesPage.services;
+const process = siteData.servicesPage.process;
+const industries = siteData.servicesPage.industries;
+const stats = siteData.servicesPage.stats;
 
 export default function ServicesPage() {
   return (
@@ -330,14 +107,14 @@ export default function ServicesPage() {
                   >
                     <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
                       <AnimatedCard>
-                        <div className="relative aspect-[16/10] rounded-2xl overflow-hidden">
+                        <div className="relative aspect-16/10 rounded-2xl overflow-hidden">
                           <Image
                             src={service.image}
                             alt={service.title}
                             fill
                             className="object-cover"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                          <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
                           <div className="absolute bottom-6 left-6">
                             <div className="w-14 h-14 rounded-xl bg-accent flex items-center justify-center">
                               <service.icon className="h-7 w-7 text-accent-foreground" />
