@@ -58,7 +58,7 @@ export default function NewsPage() {
                 <Badge
                   key={index}
                   variant={index === 0 ? "default" : "outline"}
-                  className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors px-4 py-2"
+                  className="touch-feedback touch-press cursor-pointer px-4 py-2 transition-colors hover:bg-primary hover:text-primary-foreground"
                 >
                   {category}
                 </Badge>
@@ -83,7 +83,7 @@ export default function NewsPage() {
             {featuredNews.map((item, index) => (
               <StaggerItem key={index}>
                 <AnimatedCard className="h-full">
-                  <Card className="h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
+                  <Card className="touch-feedback touch-card h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
                     <div className="relative aspect-video overflow-hidden">
                       <Image
                         src={item.image}
@@ -113,7 +113,7 @@ export default function NewsPage() {
                       <p className="text-muted-foreground mb-4">{item.excerpt}</p>
                       <Link
                         href={`/news/${item.slug}`}
-                        className="inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
+                        className="touch-feedback touch-link inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
                       >
                         Read More <ArrowRight className="ml-1 h-4 w-4" />
                       </Link>
@@ -137,7 +137,7 @@ export default function NewsPage() {
             {news.map((item, index) => (
               <StaggerItem key={index}>
                 <AnimatedCard className="h-full">
-                  <Card className="h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
+                  <Card className="touch-feedback touch-card h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
                     <div className="relative aspect-16/10 overflow-hidden">
                       <Image
                         src={item.image}
@@ -166,7 +166,7 @@ export default function NewsPage() {
                       <p className="text-muted-foreground text-sm line-clamp-2 mb-3">{item.excerpt}</p>
                       <Link
                         href={`/news/${item.slug}`}
-                        className="inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
+                        className="touch-feedback touch-link inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
                       >
                         Read More <ArrowRight className="ml-1 h-4 w-4" />
                       </Link>

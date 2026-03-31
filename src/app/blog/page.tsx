@@ -59,7 +59,7 @@ export default function BlogPage() {
                 <Badge
                   key={index}
                   variant={index === 0 ? "default" : "outline"}
-                  className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors px-4 py-2"
+                  className="touch-feedback touch-press cursor-pointer px-4 py-2 transition-colors hover:bg-primary hover:text-primary-foreground"
                 >
                   {category}
                 </Badge>
@@ -84,7 +84,7 @@ export default function BlogPage() {
             {featuredPosts.map((post, index) => (
               <StaggerItem key={index}>
                 <AnimatedCard className="h-full">
-                  <Card className="h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
+                  <Card className="touch-feedback touch-card h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
                     <div className="relative aspect-video overflow-hidden">
                       <Image
                         src={post.image}
@@ -118,7 +118,7 @@ export default function BlogPage() {
                         </div>
                         <Link
                           href={`/blog/${post.slug}`}
-                          className="inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
+                          className="touch-feedback touch-link inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
                         >
                           Read More <ArrowRight className="ml-1 h-4 w-4" />
                         </Link>
@@ -143,7 +143,7 @@ export default function BlogPage() {
             {posts.map((post, index) => (
               <StaggerItem key={index}>
                 <AnimatedCard className="h-full">
-                  <Card className="h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
+                  <Card className="touch-feedback touch-card h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
                     <div className="relative aspect-16/10 overflow-hidden">
                       <Image
                         src={post.image}
@@ -176,7 +176,7 @@ export default function BlogPage() {
                         </div>
                         <Link
                           href={`/blog/${post.slug}`}
-                          className="inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
+                          className="touch-feedback touch-link inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
                         >
                           Read More <ArrowRight className="ml-1 h-4 w-4" />
                         </Link>
