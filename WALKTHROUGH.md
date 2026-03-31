@@ -34,9 +34,9 @@ A modern, professional logistics company website built with **Next.js 16** and *
 - Timeline stacks vertically on mobile
 
 ### 2. Contact Form with Email
-- Form submission sends email to `akcs1618@gmail.com`
+- Form submission sends email to the configured recipient inbox
 - **Phone number required**, email optional
-- Nodemailer integration with Gmail
+- Nodemailer integration with configurable SMTP settings
 - Professional HTML email template
 
 ### 3. SEO Optimization
@@ -126,7 +126,7 @@ npm install
 
 # Configure email (copy and edit)
 cp .env.example .env
-# Add your Gmail App Password to .env
+# Add your Zoho Mail SMTP settings to .env
 
 # Run development server
 npm run dev

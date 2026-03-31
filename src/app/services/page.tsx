@@ -271,7 +271,7 @@ export default function ServicesPage() {
                 size="lg"
                 variant="outline"
                 asChild
-                className="border-white/30 text-white hover:bg-white/10 px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg"
+                className="border-white/30 text-black hover:bg-white/10 px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg"
               >
                 <Link href="tel:+919830032732">Call +91 98300 32732</Link>
               </Button>

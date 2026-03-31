@@ -58,7 +58,7 @@ npm install
 
 # Set up environment variables
 cp .env.example .env
-# Edit .env with your Gmail App Password
+# Edit .env with your Zoho Mail SMTP details
 
 # Run development server
 npm run dev
@@ -70,13 +70,24 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 To enable contact form emails:
 
-1. Create a [Gmail App Password](https://myaccount.google.com/apppasswords)
+1. In Zoho Mail, open your mailbox's SMTP/server configuration details and generate an app-specific password if 2FA is enabled.
 2. Copy `.env.example` to `.env`
 3. Add your credentials:
    ```
-   EMAIL_USER=your-email@gmail.com
-   EMAIL_PASS=your-app-password
+   EMAIL_USER=contact@yourdomain.com
+   EMAIL_PASS=your-zoho-app-password
+   SMTP_USER=contact@yourdomain.com
+   SMTP_PASS=your-zoho-app-password
+   EMAIL_FROM=contact@yourdomain.com
+   EMAIL_FROM_NAME=Navi Logistics
+   EMAIL_TO=contact@yourdomain.com
+   SMTP_HOST=smtppro.zoho.com
+   SMTP_PORT=465
+   SMTP_SECURE=true
+   SMTP_AUTH_METHOD=LOGIN
    ```
+4. If your Zoho account uses a different data center or server hostname, use the exact SMTP host listed by Zoho for your mailbox instead of the sample above.
+5. If `EMAIL_FROM` is an alias or group mailbox, set `SMTP_USER` and `SMTP_PASS` to the real Zoho mailbox that owns the SMTP credentials.
 
 ## 🏗️ Build & Deploy
 

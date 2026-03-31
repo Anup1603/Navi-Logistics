@@ -190,11 +190,16 @@ export default function CareersPage() {
             {testimonials.map((testimonial, index) => (
               <StaggerItem key={index}>
                 <AnimatedCard className="h-full">
-                  <Card className="h-full p-6 bg-muted/30 border-0">
-                    <CardContent className="p-0 h-full flex flex-col">
-                      <p className="text-lg mb-6 flex-1">&ldquo;{testimonial.content}&rdquo;</p>
-                      <div className="flex items-center gap-4">
-                        <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                  <Card className="h-full rounded-3xl border border-border/70 bg-background p-6 shadow-sm transition-all duration-300 hover:border-accent/40 hover:shadow-xl">
+                    <CardContent className="flex h-full flex-col p-0">
+                      <div className="mb-4 text-4xl leading-none text-accent/25">
+                        &rdquo;
+                      </div>
+                      <p className="mb-6 flex-1 text-lg leading-8 text-foreground/85">
+                        &ldquo;{testimonial.content}&rdquo;
+                      </p>
+                      <div className="border-t border-border/60 pt-4">
+                        {/*
                           <Image
                             src={testimonial.image}
                             alt={testimonial.name}
@@ -202,12 +207,16 @@ export default function CareersPage() {
                             sizes="48px"
                             className="object-cover"
                           />
+                        */}
+                        <div className="font-semibold text-primary">
+                          {testimonial.name}
                         </div>
-                        <div>
-                          <div className="font-semibold">{testimonial.name}</div>
-                          <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                          <div className="text-xs text-accent">{testimonial.years}</div>
+                        {/*
+                        <div className="text-sm text-muted-foreground">
+                          {testimonial.role}
                         </div>
+                        */}
+                        <div className="text-xs text-accent">{testimonial.years}</div>
                       </div>
                     </CardContent>
                   </Card>

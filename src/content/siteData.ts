@@ -110,7 +110,7 @@ export const newsArticles = [
     date: "January 18, 2025",
     category: "Sustainability",
     image:
-      "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&h=500&fit=crop",
     readTime: "4 min read",
     featured: true,
     content: createSections(
@@ -157,7 +157,7 @@ export const newsArticles = [
     date: "January 14, 2025",
     category: "Industry News",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1733259794900-25d0ad4864c6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&h=400&fit=crop",
     readTime: "5 min read",
     content: createSections(
       "Operational Visibility",
@@ -180,7 +180,7 @@ export const newsArticles = [
     date: "December 5, 2024",
     category: "Industry News",
     image:
-      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
     readTime: "4 min read",
     content: createSections(
       "Smarter Route Planning",
@@ -203,7 +203,7 @@ export const newsArticles = [
     date: "January 11, 2025",
     category: "Company Updates",
     image:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
     readTime: "4 min read",
     content: createSections(
       "Network Throughput",
@@ -295,7 +295,7 @@ export const newsArticles = [
     date: "November 25, 2024",
     category: "Industry News",
     image:
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1685284067427-b9019667a008?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&h=400&fit=crop",
     readTime: "4 min read",
     content: createSections(
       "Temperature-Controlled Growth",
@@ -347,7 +347,7 @@ export const blogPosts = [
       "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face",
     category: "Technology",
     image:
-      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=500&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1756109282571-2190c113fa97?q=80&w=2040&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=800&h=500&fit=crop",
     readTime: "8 min read",
     featured: true,
     content: createSections(
@@ -427,7 +427,7 @@ export const blogPosts = [
       "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face",
     category: "Supply Chain",
     image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
     readTime: "6 min read",
     content: createSections(
       "Scaling the FMCG Network",
@@ -479,7 +479,7 @@ export const blogPosts = [
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face",
     category: "Supply Chain",
     image:
-      "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&h=400&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1683984171269-04c84ee23234?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&h=400&fit=crop",
     readTime: "7 min read",
     content: createSections(
       "The Hardest Delivery Leg",
@@ -609,7 +609,7 @@ export const blogPosts = [
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
     category: "Best Practices",
     image:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
     readTime: "5 min read",
     content: createSections(
       "Measuring Packaging Performance",
@@ -681,7 +681,7 @@ export const siteData = {
     },
     {
       name: "LinkedIn",
-      href: "https://www.linkedin.com/company/navilogistics",
+      href: "https://www.linkedin.com/company/srslogistics9/",
       icon: Linkedin,
     },
   ] satisfies SocialLinkItem[],
@@ -723,6 +723,7 @@ export const siteData = {
       ],
       "West India": [
         "Mumbai",
+        "Bhiwandi",
         "Pune",
         "Ahmedabad",
         "Surat",
@@ -884,7 +885,7 @@ export const siteData = {
           "Time-critical shipments delivered with speed and precision across India.",
         href: "/services#express",
         image:
-          "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1607273685680-6bd976c5a5ce?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&h=400&fit=crop",
       },
       {
         icon: Warehouse,
@@ -1058,23 +1059,21 @@ export const siteData = {
         name: "Ram Vinay Sharma",
         role: "Director",
         bio: "With over 20 years of experience in the logistics industry, Mr. Sharma brings unparalleled expertise and strategic vision to Navi Logistics. His leadership has been pivotal in transitioning the company from a regional player to a national force.",
-        image:
-          "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
+        image: "/Ram Vinay.png",
       },
       {
         name: "Rohit Kumar Sharma",
         role: "Logistics Consultant",
         bio: "With over 5 years of hands-on experience in logistics and specialized tax expertise from Ernst & Young, Rohit brings a unique multidisciplinary perspective to Navi Logistics.",
-        image:
-          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+        image: "/Rohit.png",
       },
-      {
-        name: "Saptarshi Sadhukhan",
-        role: "Cluster Head",
-        bio: "An experienced logistics professional with over 10 years of expertise. Has worked with Reinvent Agrochain, Pranik Logistics, Moeving Urban Tech, Mahindra Logistics, and Velocity Express.",
-        image:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-      },
+      // {
+      //   name: "Saptarshi Sadhukhan",
+      //   role: "Cluster Head",
+      //   bio: "An experienced logistics professional with over 10 years of expertise. Has worked with Reinvent Agrochain, Pranik Logistics, Moeving Urban Tech, Mahindra Logistics, and Velocity Express.",
+      //   image:
+      //     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+      // },
     ],
   },
   servicesPage: {
@@ -1111,7 +1110,7 @@ export const siteData = {
         description:
           "Time-critical deliveries with guaranteed speed and reliability.",
         image:
-          "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1607273685680-6bd976c5a5ce?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=800&h=500&fit=crop",
         features: [
           "Same-day delivery options",
           "Next-day guaranteed service",
@@ -1296,6 +1295,15 @@ export const siteData = {
         details: [
           "146 Foreshore Road, Shibpur",
           "Howrah (West Bengal) - 711101",
+        ],
+      },
+      {
+        icon: Warehouse,
+        title: "Warehouse",
+        details: [
+          "Building No. B-14, Gala No. 1",
+          "Parasnath Complex, Dapode Road",
+          "Bhiwandi, Maharashtra 421302",
         ],
       },
       {
