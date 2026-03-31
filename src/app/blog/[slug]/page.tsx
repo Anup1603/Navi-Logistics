@@ -65,11 +65,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const relatedItems = blogPosts
     .filter((candidate) => candidate.slug !== post.slug)
-    .slice(0, 3)
-    .map((candidate) => ({
-      ...candidate,
-      author: candidate.author,
-    }));
+    .slice(0, 3);
 
   return (
     <EditorialDetail
@@ -77,7 +73,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       eyebrow="Blog Post"
       collectionHref="/blog"
       collectionLabel="Blog"
-      relatedHeading="More From the Blog"
+      relatedHeading="More to Explore"
       relatedItems={relatedItems}
     />
   );

@@ -315,8 +315,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 lg:py-28">
+       {/* Testimonials Section */}
+      <section className="bg-muted/20 py-20 lg:py-28">
         <div className="container mx-auto">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <Badge className="mb-4">Testimonials</Badge>
@@ -330,27 +330,31 @@ export default function HomePage() {
           </AnimatedSection>
 
           <StaggerContainer
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
             staggerDelay={0.15}
           >
             {testimonials.map((testimonial, index) => (
               <StaggerItem key={index}>
                 <AnimatedCard className="h-full">
-                  <Card className="h-full bg-muted/30 border-0">
-                    <CardContent className="pt-6 h-full flex flex-col">
-                      <div className="flex gap-1 mb-4">
+                  <Card className="h-full overflow-hidden rounded-3xl border border-border/70 bg-background shadow-sm transition-all duration-300 hover:border-accent/40 hover:shadow-xl">
+                    <CardContent className="flex h-full flex-col p-8">
+                      <div className="mb-5 flex items-center justify-between gap-3">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star
                             key={i}
                             className="h-5 w-5 fill-accent text-accent"
                           />
                         ))}
+                        <span className="text-4xl leading-none text-accent/25">
+                          &rdquo;
+                        </span>
                       </div>
-                      <p className="text-lg mb-6 flex-1">
+                      <p className="flex-1 text-base leading-8 text-foreground/85 md:text-lg">
                         &ldquo;{testimonial.content}&rdquo;
                       </p>
-                      <div className="flex items-center gap-4">
-                        <div className="relative w-12 h-12 rounded-full overflow-hidden">
+
+                      <div className="mt-6 border-t border-border/60 pt-5">
+                        {/*
                           <Image
                             src={testimonial.image}
                             alt={testimonial.name}
@@ -358,15 +362,15 @@ export default function HomePage() {
                             sizes="48px"
                             className="object-cover"
                           />
+                        */}
+                        <div className="font-semibold tracking-tight text-primary">
+                          {testimonial.name}
                         </div>
-                        <div>
-                          <div className="font-semibold">
-                            {testimonial.name}
-                          </div>
-                          <div className="text-sm text-muted-foreground">
-                            {testimonial.role}
-                          </div>
+                        {/*
+                        <div className="text-sm text-muted-foreground">
+                          {testimonial.role}
                         </div>
+                        */}
                       </div>
                     </CardContent>
                   </Card>

@@ -113,22 +113,14 @@ export default function BlogPage() {
                       </h3>
                       <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="relative w-8 h-8 rounded-full overflow-hidden">
-                            <Image
-                              src={post.authorImage}
-                              alt={post.author}
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                          <span className="text-sm font-medium">{post.author}</span>
+                        <div className="text-sm font-medium text-muted-foreground">
+                          By {post.author}
                         </div>
                         <Link
                           href={`/blog/${post.slug}`}
                           className="inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
                         >
-                          Read <ArrowRight className="ml-1 h-4 w-4" />
+                          Read More <ArrowRight className="ml-1 h-4 w-4" />
                         </Link>
                       </div>
                     </CardContent>
@@ -179,22 +171,14 @@ export default function BlogPage() {
                       </h3>
                       <p className="text-muted-foreground text-sm line-clamp-2 mb-3">{post.excerpt}</p>
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <div className="relative w-6 h-6 rounded-full overflow-hidden">
-                            <Image
-                              src={post.authorImage}
-                              alt={post.author}
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                          <span className="text-xs">{post.author}</span>
+                        <div className="text-xs text-muted-foreground">
+                          By {post.author}
                         </div>
                         <Link
                           href={`/blog/${post.slug}`}
-                          className="inline-flex items-center text-xs font-medium text-accent"
+                          className="inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
                         >
-                          Read <ArrowRight className="ml-1 h-3 w-3" />
+                          Read More <ArrowRight className="ml-1 h-4 w-4" />
                         </Link>
                       </div>
                     </CardContent>

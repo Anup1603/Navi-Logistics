@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import type SMTPTransport from "nodemailer/lib/smtp-transport";
 import { siteData } from "@/content/siteData";
 
 interface ContactFormData {
@@ -11,18 +12,92 @@ interface ContactFormData {
   message: string;
 }
 
-// Create reusable transporter
-const createTransporter = () => {
-  return nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
+interface MailerConfig {
+  sender: string;
+  senderName: string;
+  recipient: string;
+  transport: SMTPTransport.Options;
+}
+
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+const parseBoolean = (value: string | undefined, fallback: boolean) => {
+  if (value === undefined) {
+    return fallback;
+  }
+
+  return value.trim().toLowerCase() === "true";
 };
 
-// Helper to render table rows safely
+const getPreferredAuthMethod = (host: string) => {
+  const explicitMethod = process.env.SMTP_AUTH_METHOD?.trim();
+
+  if (explicitMethod) {
+    return explicitMethod.toUpperCase();
+  }
+
+  return /zoho/i.test(host) ? "LOGIN" : undefined;
+};
+
+const getMailerConfig = (): MailerConfig => {
+  const smtpUser =
+    process.env.SMTP_USER?.trim() || process.env.EMAIL_USER?.trim();
+  const smtpPass =
+    process.env.SMTP_PASS?.trim() || process.env.EMAIL_PASS?.trim();
+
+  if (!smtpUser || !smtpPass) {
+    throw new Error("Email credentials are not configured");
+  }
+
+  const sender = process.env.EMAIL_FROM?.trim() || smtpUser;
+  const senderName = process.env.EMAIL_FROM_NAME?.trim() || "Navi Logistics";
+  const recipient =
+    process.env.EMAIL_TO?.trim() || siteData.company.inquiryRecipientEmail;
+  const smtpHost = process.env.SMTP_HOST?.trim();
+
+  if (!smtpHost) {
+    return {
+      sender,
+      senderName,
+      recipient,
+      transport: {
+        service: "gmail",
+        auth: {
+          user: smtpUser,
+          pass: smtpPass,
+        },
+      },
+    };
+  }
+
+  const parsedPort = Number(process.env.SMTP_PORT?.trim() || "465");
+  const smtpPort = Number.isFinite(parsedPort) ? parsedPort : 465;
+  const smtpSecure = parseBoolean(process.env.SMTP_SECURE, smtpPort === 465);
+  const authMethod = getPreferredAuthMethod(smtpHost);
+
+  return {
+    sender,
+    senderName,
+    recipient,
+    transport: {
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpSecure,
+      ...(authMethod && { authMethod }),
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
+      },
+    },
+  };
+};
+
 const renderRow = (label: string, value: string) => `
   <tr>
     <td style="padding:10px 0;font-weight:600;color:#4a5568;width:150px;">
@@ -38,7 +113,6 @@ export async function POST(request: NextRequest) {
   try {
     const body: ContactFormData = await request.json();
 
-    // Required fields
     if (!body.name || !body.phone || !body.message) {
       return NextResponse.json(
         { error: "Name, phone number, and message are required" },
@@ -46,7 +120,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Phone validation
     const phoneDigits = body.phone.replace(/\D/g, "");
     if (phoneDigits.length < 10) {
       return NextResponse.json(
@@ -55,7 +128,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Email validation (optional)
     if (body.email) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(body.email)) {
@@ -71,31 +143,48 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
     });
 
-    // Send Email
-    try {
-      const transporter = createTransporter();
+    const mailerConfig = getMailerConfig();
+    const transporter = nodemailer.createTransport(mailerConfig.transport);
+    const safeName = escapeHtml(body.name);
+    const safePhone = escapeHtml(body.phone);
+    const safeEmail = body.email ? escapeHtml(body.email) : "Not provided";
+    const safeCompany = body.company ? escapeHtml(body.company) : "Not provided";
+    const safeService = body.service ? escapeHtml(body.service) : "Not specified";
+    const safeMessage = escapeHtml(body.message).replace(/\n/g, "<br>");
 
-      const mailOptions = {
-        from: `"Navi Logistics" <${process.env.EMAIL_USER}>`,
-        to: siteData.company.inquiryRecipientEmail,
-        subject: `📩 New Contact Request – ${body.name}`,
-        ...(body.email && { replyTo: body.email }),
-        html: `
+    await transporter.sendMail({
+      from: `"${mailerConfig.senderName}" <${mailerConfig.sender}>`,
+      to: mailerConfig.recipient,
+      subject: `New Contact Request - ${body.name}`,
+      ...(body.email && { replyTo: body.email }),
+      text: [
+        "New contact form submission",
+        `Name: ${body.name}`,
+        `Phone: ${body.phone}`,
+        `Email: ${body.email || "Not provided"}`,
+        `Company: ${body.company || "Not provided"}`,
+        `Service: ${body.service || "Not specified"}`,
+        "",
+        "Message:",
+        body.message,
+      ].join("\n"),
+      html: `
         <div style="background:#f4f6f8;padding:30px 0;font-family:Arial,Helvetica,sans-serif;">
           <table width="100%" cellspacing="0" cellpadding="0">
             <tr>
               <td align="center">
-
-                <table width="600" cellspacing="0" cellpadding="0"
-                  style="background:#ffffff;border-radius:12px;overflow:hidden;
-                  box-shadow:0 8px 24px rgba(0,0,0,0.08);">
-
-                  <!-- Header -->
+                <table
+                  width="600"
+                  cellspacing="0"
+                  cellpadding="0"
+                  style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.08);"
+                >
                   <tr>
-                    <td style="background:linear-gradient(135deg,#1a365d,#2b6cb0);
-                      padding:24px;color:#ffffff;">
+                    <td
+                      style="background:linear-gradient(135deg,#1a365d,#2b6cb0);padding:24px;color:#ffffff;"
+                    >
                       <h1 style="margin:0;font-size:22px;font-weight:600;">
-                        📩 New Contact Form Submission
+                        New Contact Form Submission
                       </h1>
                       <p style="margin:6px 0 0;font-size:14px;opacity:0.9;">
                         Navi Logistics Website
@@ -103,71 +192,69 @@ export async function POST(request: NextRequest) {
                     </td>
                   </tr>
 
-                  <!-- Content -->
                   <tr>
                     <td style="padding:24px;">
                       <p style="font-size:15px;color:#2d3748;margin-top:0;">
                         A new inquiry has been received. Details are below:
                       </p>
 
-                      <table width="100%" cellpadding="0" cellspacing="0"
-                        style="margin-top:16px;border-collapse:collapse;">
-                        ${renderRow("👤 Name", body.name)}
-                        ${renderRow("📞 Phone", body.phone)}
-                        ${renderRow("✉️ Email", body.email || "Not provided")}
-                        ${renderRow("🏢 Company", body.company || "Not provided")}
-                        ${renderRow("🛠 Service", body.service || "Not specified")}
+                      <table
+                        width="100%"
+                        cellpadding="0"
+                        cellspacing="0"
+                        style="margin-top:16px;border-collapse:collapse;"
+                      >
+                        ${renderRow("Name", safeName)}
+                        ${renderRow("Phone", safePhone)}
+                        ${renderRow("Email", safeEmail)}
+                        ${renderRow("Company", safeCompany)}
+                        ${renderRow("Service", safeService)}
                       </table>
 
                       <div style="margin-top:24px;">
                         <h3 style="margin-bottom:10px;font-size:16px;color:#1a365d;">
-                          📝 Message
+                          Message
                         </h3>
-                        <div style="background:#f7fafc;border-left:4px solid #2b6cb0;
-                          padding:16px;border-radius:6px;color:#2d3748;line-height:1.6;">
-                          ${body.message.replace(/\n/g, "<br>")}
+                        <div
+                          style="background:#f7fafc;border-left:4px solid #2b6cb0;padding:16px;border-radius:6px;color:#2d3748;line-height:1.6;"
+                        >
+                          ${safeMessage}
                         </div>
                       </div>
 
                       ${
                         body.email
                           ? `<p style="margin-top:20px;font-size:13px;color:#38a169;">
-                              ✔ You can reply directly to this email to contact the sender.
+                              You can reply directly to this email to contact the sender.
                             </p>`
                           : ""
                       }
                     </td>
                   </tr>
 
-                  <!-- Footer -->
                   <tr>
-                    <td style="background:#f8fafc;padding:16px;text-align:center;
-                      font-size:12px;color:#718096;">
+                    <td
+                      style="background:#f8fafc;padding:16px;text-align:center;font-size:12px;color:#718096;"
+                    >
                       <p style="margin:0;">
                         Received on ${new Date().toLocaleString("en-IN", {
                           timeZone: "Asia/Kolkata",
                         })}
                       </p>
                       <p style="margin:6px 0 0;">
-                        © ${new Date().getFullYear()} Navi Logistics
+                        Copyright ${new Date().getFullYear()} Navi Logistics
                       </p>
                     </td>
                   </tr>
-
                 </table>
-
               </td>
             </tr>
           </table>
         </div>
-        `,
-      };
+      `,
+    });
 
-      await transporter.sendMail(mailOptions);
-      console.log("Email sent successfully");
-    } catch (emailError) {
-      console.error("Email sending failed:", emailError);
-    }
+    console.log("Email sent successfully");
 
     return NextResponse.json(
       {
@@ -176,11 +263,13 @@ export async function POST(request: NextRequest) {
       },
       { status: 200 }
     );
-
   } catch (error) {
     console.error("Contact form error:", error);
     return NextResponse.json(
-      { error: "Failed to process your request. Please try again later." },
+      {
+        error:
+          "We could not deliver your message right now. Please try again later.",
+      },
       { status: 500 }
     );
   }

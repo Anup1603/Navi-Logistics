@@ -52,17 +52,17 @@ export function Footer() {
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.35fr_0.8fr_0.8fr_1fr]">
           <div className="space-y-6">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="overflow-hidden rounded-lg border border-white/10 bg-white/5 p-0.5">
+            <Link href="/" className="group flex items-center gap-3">
+              <div className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-3 group-hover:scale-105">
                 <Image
                   src={brand.logo}
                   alt={`${brand.name} Logo`}
                   width={50}
                   height={50}
-                  className="h-20 w-20"
+                  className="h-20 w-20 transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
-              <div className="space-y-1">
+              <div className="space-y-1 transition-transform duration-300 group-hover:translate-x-1">
                 <div>
                   <span className="text-lg font-bold text-primary-foreground">
                     {brand.name.split(" ")[0]}

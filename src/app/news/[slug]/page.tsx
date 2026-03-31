@@ -75,7 +75,7 @@ export default async function NewsArticlePage({
       eyebrow="News Article"
       collectionHref="/news"
       collectionLabel="News"
-      relatedHeading="More News"
+      relatedHeading="More to Explore"
       relatedItems={relatedItems}
     />
   );

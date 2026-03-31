@@ -13,6 +13,7 @@ import {
   StaggerItem,
 } from "@/components/AnimatedComponents";
 import { siteData } from "@/content/siteData";
+import { cn } from "@/lib/utils";
 import {
   Target,
   Eye,
@@ -24,6 +25,10 @@ const values = siteData.about.values;
 const milestones = siteData.about.milestones;
 const team = siteData.about.team;
 const stats = siteData.about.stats;
+const teamCardClass =
+  team.length <= 2
+    ? "w-full md:max-w-[420px]"
+    : "w-full md:w-[calc(50%-1rem)] xl:w-[calc(33.333%-1.334rem)] xl:max-w-[360px]";
 
 export default function AboutPage() {
   return (
@@ -374,18 +379,21 @@ export default function AboutPage() {
             </p>
           </AnimatedSection>
 
-          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <StaggerContainer className="mx-auto flex max-w-6xl flex-wrap justify-center gap-8">
             {team.map((member, index) => (
-              <StaggerItem key={index}>
+              <StaggerItem
+                key={index}
+                className={cn("flex", teamCardClass)}
+              >
                 <AnimatedCard className="h-full">
                   <Card className="h-full overflow-hidden group border-2 hover:border-accent/50 transition-colors">
-                    <div className="relative aspect-square overflow-hidden">
+                    <div className="relative aspect-[4/5] overflow-hidden bg-muted/20">
                       <Image
                         src={member.image}
                         alt={member.name}
                         fill
                         sizes="(max-width: 768px) 50vw, 33vw"
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="object-contain object-top p-3 group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>

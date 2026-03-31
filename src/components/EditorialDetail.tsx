@@ -16,7 +16,6 @@ type RelatedItem = {
   date: string;
   readTime: string;
   image: string;
-  author?: string;
 };
 
 type EditorialDetailProps = {
@@ -31,7 +30,7 @@ type EditorialDetailProps = {
 const hasAuthor = (
   item: EditorialItem,
 ): item is BlogPost & { content: ContentSection[] } =>
-  "author" in item && "authorImage" in item;
+  "author" in item;
 
 export function EditorialDetail({
   item,
@@ -86,19 +85,9 @@ export function EditorialDetail({
             </div>
 
             {hasAuthor(item) ? (
-              <div className="flex items-center gap-3 rounded-full bg-white/10 px-3 py-2 backdrop-blur-sm w-fit">
-                <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/20">
-                  <Image
-                    src={item.authorImage}
-                    alt={item.author}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div>
-                  <p className="text-sm text-white/70">Written by</p>
-                  <p className="font-medium text-white">{item.author}</p>
-                </div>
+              <div className="w-fit rounded-full bg-white/10 px-4 py-2 text-sm text-white/85 backdrop-blur-sm">
+                <span className="text-white/70">Written by </span>
+                <span className="font-medium text-white">{item.author}</span>
               </div>
             ) : null}
           </div>
@@ -220,17 +209,13 @@ export function EditorialDetail({
                       {relatedItem.excerpt}
                     </p>
                   </div>
-                  {relatedItem.author ? (
-                    <p className="text-xs text-muted-foreground">
-                      By {relatedItem.author}
-                    </p>
-                  ) : null}
-                  <Button asChild variant="ghost" className="px-0 text-accent hover:text-accent">
-                    <Link href={`${collectionHref}/${relatedItem.slug}`}>
-                      Read more
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </Button>
+                  <Link
+                    href={`${collectionHref}/${relatedItem.slug}`}
+                    className="inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
+                  >
+                    Read More
+                    <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
                 </CardContent>
               </Card>
             ))}
