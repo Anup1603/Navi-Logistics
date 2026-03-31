@@ -177,7 +177,7 @@ export function EditorialDetail({
             {relatedItems.map((relatedItem) => (
               <Card
                 key={relatedItem.slug}
-                className="overflow-hidden border-2 transition-colors hover:border-accent/50"
+                className="touch-feedback touch-card overflow-hidden border-2 transition-colors hover:border-accent/50"
               >
                 <div className="relative aspect-video overflow-hidden">
                   <Image
@@ -211,7 +211,7 @@ export function EditorialDetail({
                   </div>
                   <Link
                     href={`${collectionHref}/${relatedItem.slug}`}
-                    className="inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
+                    className="touch-feedback touch-link inline-flex items-center text-sm font-medium text-accent hover:gap-2 transition-all"
                   >
                     Read More
                     <ArrowRight className="ml-1 h-4 w-4" />

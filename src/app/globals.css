@@ -361,3 +361,41 @@
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
+
+/* Touch-first feedback for devices that don't support reliable hover */
+.touch-feedback {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .touch-card {
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      border-color 180ms ease,
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+
+  .touch-card:active {
+    transform: translateY(-2px) scale(0.99);
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+  }
+
+  .touch-link {
+    transition: transform 180ms ease, color 180ms ease, gap 180ms ease;
+  }
+
+  .touch-link:active {
+    transform: translateX(4px);
+  }
+
+  .touch-press {
+    transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+  }
+
+  .touch-press:active {
+    transform: scale(0.98);
+  }
+}
