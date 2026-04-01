@@ -84,6 +84,11 @@ export default function ContactPage() {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
+    // Auto-clear error state when the user starts editing the form.
+    if (status === "error") {
+      setStatus("idle");
+      setErrorMessage("");
+    }
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,

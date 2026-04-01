@@ -676,7 +676,7 @@ export const siteData = {
   socialLinks: [
     {
       name: "Facebook",
-      href: "https://www.facebook.com/navilogistics",
+      href: "https://www.facebook.com/share/14VcVRLyu8e/?mibextid=wwXIfr",
       icon: Facebook,
     },
     {
