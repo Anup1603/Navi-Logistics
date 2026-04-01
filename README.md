@@ -81,12 +81,13 @@ To enable contact form emails:
    EMAIL_FROM=contact@yourdomain.com
    EMAIL_FROM_NAME=Navi Logistics
    EMAIL_TO=contact@yourdomain.com
-   SMTP_HOST=smtppro.zoho.com
+   SMTP_HOST=smtppro.zoho.in
    SMTP_PORT=465
    SMTP_SECURE=true
-   SMTP_AUTH_METHOD=LOGIN
+   # Optional: only set this if Zoho tells you to
+   # SMTP_AUTH_METHOD=LOGIN
    ```
-4. If your Zoho account uses a different data center or server hostname, use the exact SMTP host listed by Zoho for your mailbox instead of the sample above.
+4. If your Zoho account uses a different data center or server hostname, use the exact SMTP host listed by Zoho for your mailbox instead of the sample above. A `535 Authentication Failed` error is often caused by using the wrong Zoho data center host, such as `smtppro.zoho.com` instead of `smtppro.zoho.in`.
 5. If `EMAIL_FROM` is an alias or group mailbox, set `SMTP_USER` and `SMTP_PASS` to the real Zoho mailbox that owns the SMTP credentials.
 
 ## 🏗️ Build & Deploy
