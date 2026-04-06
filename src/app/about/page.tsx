@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -14,6 +12,7 @@ import {
 } from "@/components/AnimatedComponents";
 import { siteData } from "@/content/siteData";
 import { cn } from "@/lib/utils";
+import { createPageMetadata } from "@/lib/seo";
 import {
   Target,
   Eye,
@@ -29,6 +28,19 @@ const teamCardClass =
   team.length <= 2
     ? "w-full md:max-w-[420px]"
     : "w-full md:w-[calc(50%-1rem)] xl:w-[calc(33.333%-1.334rem)] xl:max-w-[360px]";
+
+export const metadata = createPageMetadata({
+  title: "About Navi Logistics",
+  description:
+    "Learn about Navi Logistics, our journey since 2016, our leadership team, and how we support freight, warehousing, and supply chain operations across India.",
+  path: "/about",
+  keywords: [
+    "about Navi Logistics",
+    "logistics company Howrah",
+    "supply chain company India",
+    "freight company West Bengal",
+  ],
+});
 
 export default function AboutPage() {
   return (

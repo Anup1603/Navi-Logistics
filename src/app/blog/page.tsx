@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -9,10 +7,25 @@ import { Input } from "@/components/ui/input";
 import { AnimatedSection, AnimatedCard, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { Calendar, ArrowRight, Clock, Search } from "lucide-react";
 import { siteData } from "@/content/siteData";
+import { createPageMetadata } from "@/lib/seo";
 
 const categories = siteData.blogPage.categories;
 const featuredPosts = siteData.blogPage.featuredPosts;
 const posts = siteData.blogPage.posts;
+
+export const metadata = createPageMetadata({
+  title: "Logistics Blog",
+  description:
+    "Read the Navi Logistics blog for logistics insights, supply chain best practices, warehousing strategies, and transportation technology updates.",
+  path: "/blog",
+  keywords: [
+    "logistics blog",
+    "supply chain blog",
+    "warehousing insights",
+    "transportation blog India",
+    "logistics best practices",
+  ],
+});
 
 export default function BlogPage() {
   return (

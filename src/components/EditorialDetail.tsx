@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { BlogPost, ContentSection, NewsArticle } from "@/content/siteData";
+import { parseContentDate } from "@/lib/seo";
 
 type EditorialItem = NewsArticle | BlogPost;
 
@@ -40,6 +41,8 @@ export function EditorialDetail({
   relatedHeading,
   relatedItems,
 }: EditorialDetailProps) {
+  const publishedDate = parseContentDate(item.date);
+
   return (
     <div className="flex flex-col">
       <section className="relative overflow-hidden gradient-hero py-18 text-white lg:py-24">
@@ -73,7 +76,7 @@ export function EditorialDetail({
             <div className="flex flex-wrap items-center gap-4 text-sm text-white/80">
               <span className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
-                {item.date}
+                <time dateTime={publishedDate}>{item.date}</time>
               </span>
               <span className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
@@ -133,7 +136,7 @@ export function EditorialDetail({
                   </p>
                   <p>
                     <span className="font-medium text-foreground">Published:</span>{" "}
-                    {item.date}
+                    <time dateTime={publishedDate}>{item.date}</time>
                   </p>
                   <p>
                     <span className="font-medium text-foreground">Read time:</span>{" "}

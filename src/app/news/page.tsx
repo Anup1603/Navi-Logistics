@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -9,10 +7,25 @@ import { Input } from "@/components/ui/input";
 import { AnimatedSection, AnimatedCard, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { Calendar, ArrowRight, Clock, Search } from "lucide-react";
 import { siteData } from "@/content/siteData";
+import { createPageMetadata } from "@/lib/seo";
 
 const categories = siteData.newsPage.categories;
 const featuredNews = siteData.newsPage.featuredNews;
 const news = siteData.newsPage.news;
+
+export const metadata = createPageMetadata({
+  title: "Logistics News",
+  description:
+    "Follow Navi Logistics news for company updates, logistics industry developments, sustainability initiatives, and supply chain announcements.",
+  path: "/news",
+  keywords: [
+    "logistics news",
+    "supply chain news",
+    "freight industry updates",
+    "transportation news India",
+    "Navi Logistics news",
+  ],
+});
 
 export default function NewsPage() {
   return (

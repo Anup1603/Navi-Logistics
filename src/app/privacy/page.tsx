@@ -1,5 +1,3 @@
-"use client";
-
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -9,9 +7,18 @@ import {
 } from "@/components/AnimatedComponents";
 import Image from "next/image";
 import { siteData } from "@/content/siteData";
+import { createPageMetadata } from "@/lib/seo";
 import { Phone } from "lucide-react";
 
 const sections = siteData.privacyPage.sections;
+
+export const metadata = createPageMetadata({
+  title: "Privacy Policy",
+  description:
+    "Read the Navi Logistics privacy policy to understand how we collect, use, and protect customer and business information.",
+  path: "/privacy",
+  keywords: ["privacy policy", "data protection", "Navi Logistics privacy"],
+});
 
 export default function PrivacyPage() {
   return (

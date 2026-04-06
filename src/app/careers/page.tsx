@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -8,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { AnimatedSection, AnimatedCard, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { siteData } from "@/content/siteData";
+import { createPageMetadata } from "@/lib/seo";
 import {
   ArrowRight,
   MapPin,
@@ -19,6 +18,19 @@ const benefits = siteData.careersPage.benefits;
 const testimonials = siteData.careersPage.testimonials;
 const positions = siteData.careersPage.positions;
 const stats = siteData.careersPage.stats;
+
+export const metadata = createPageMetadata({
+  title: "Careers",
+  description:
+    "Explore career opportunities at Navi Logistics across operations, warehousing, customer success, analytics, and technology roles.",
+  path: "/careers",
+  keywords: [
+    "logistics careers",
+    "supply chain jobs",
+    "warehouse jobs India",
+    "transport company careers",
+  ],
+});
 
 export default function CareersPage() {
   return (

@@ -855,10 +855,12 @@ export const siteData = {
       },
       { route: "/news", priority: 0.6, changeFrequency: "weekly" as const },
       { route: "/blog", priority: 0.6, changeFrequency: "weekly" as const },
+      { route: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },
+      { route: "/terms", priority: 0.3, changeFrequency: "yearly" as const },
     ],
     serviceAnchors: [
       "/services#3pl",
-      "/services#express",
+      "/services#express-delivery",
       "/services#warehousing",
       "/services#ftl",
       "/services#ptl",

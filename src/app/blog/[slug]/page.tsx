@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import StructuredData from "@/components/StructuredData";
 import { EditorialDetail } from "@/components/EditorialDetail";
 import {
   blogPosts,
   getBlogPostBySlug,
-  siteData,
 } from "@/content/siteData";
+import {
+  createBreadcrumbSchema,
+  createEditorialMetadata,
+  createEditorialSchema,
+} from "@/lib/seo";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -25,34 +30,11 @@ export async function generateMetadata({
     return {};
   }
 
-  const url = `${siteData.seo.siteUrl}/blog/${post.slug}`;
-
-  return {
-    title: `${post.title} | ${siteData.brand.name} Blog`,
-    description: post.excerpt,
-    alternates: {
-      canonical: url,
-    },
-    openGraph: {
-      type: "article",
-      url,
-      title: post.title,
-      description: post.excerpt,
-      siteName: siteData.brand.name,
-      images: [
-        {
-          url: post.image,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
-      images: [post.image],
-    },
-  };
+  return createEditorialMetadata({
+    article: post,
+    path: `/blog/${post.slug}`,
+    section: "Blog",
+  });
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -66,15 +48,29 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const relatedItems = blogPosts
     .filter((candidate) => candidate.slug !== post.slug)
     .slice(0, 3);
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Blog", path: "/blog" },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ]);
+  const articleSchema = createEditorialSchema({
+    article: post,
+    path: `/blog/${post.slug}`,
+    type: "BlogPosting",
+  });
 
   return (
-    <EditorialDetail
-      item={post}
-      eyebrow="Blog Post"
-      collectionHref="/blog"
-      collectionLabel="Blog"
-      relatedHeading="More to Explore"
-      relatedItems={relatedItems}
-    />
+    <>
+      <StructuredData data={breadcrumbSchema} />
+      <StructuredData data={articleSchema} />
+      <EditorialDetail
+        item={post}
+        eyebrow="Blog Post"
+        collectionHref="/blog"
+        collectionLabel="Blog"
+        relatedHeading="More to Explore"
+        relatedItems={relatedItems}
+      />
+    </>
   );
 }
