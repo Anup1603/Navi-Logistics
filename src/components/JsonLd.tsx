@@ -1,4 +1,5 @@
 import { siteData } from "@/content/siteData";
+import StructuredData from "@/components/StructuredData";
 
 export default function JsonLd() {
   const { brand, company, seo, servicesPage } = siteData;
@@ -77,27 +78,12 @@ export default function JsonLd() {
     "@type": "WebSite",
     name: brand.name,
     url: seo.siteUrl,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${seo.siteUrl}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(websiteSchema),
-        }}
-      />
+      <StructuredData data={localBusinessSchema} />
+      <StructuredData data={websiteSchema} />
     </>
   );
 }

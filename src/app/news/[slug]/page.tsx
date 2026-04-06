@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import StructuredData from "@/components/StructuredData";
 import { EditorialDetail } from "@/components/EditorialDetail";
 import {
   getNewsArticleBySlug,
   newsArticles,
-  siteData,
 } from "@/content/siteData";
+import {
+  createBreadcrumbSchema,
+  createEditorialMetadata,
+  createEditorialSchema,
+} from "@/lib/seo";
 
 type NewsArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -25,34 +30,11 @@ export async function generateMetadata({
     return {};
   }
 
-  const url = `${siteData.seo.siteUrl}/news/${article.slug}`;
-
-  return {
-    title: `${article.title} | ${siteData.brand.name} News`,
-    description: article.excerpt,
-    alternates: {
-      canonical: url,
-    },
-    openGraph: {
-      type: "article",
-      url,
-      title: article.title,
-      description: article.excerpt,
-      siteName: siteData.brand.name,
-      images: [
-        {
-          url: article.image,
-          alt: article.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: article.title,
-      description: article.excerpt,
-      images: [article.image],
-    },
-  };
+  return createEditorialMetadata({
+    article,
+    path: `/news/${article.slug}`,
+    section: "News",
+  });
 }
 
 export default async function NewsArticlePage({
@@ -68,15 +50,29 @@ export default async function NewsArticlePage({
   const relatedItems = newsArticles
     .filter((candidate) => candidate.slug !== article.slug)
     .slice(0, 3);
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "News", path: "/news" },
+    { name: article.title, path: `/news/${article.slug}` },
+  ]);
+  const articleSchema = createEditorialSchema({
+    article,
+    path: `/news/${article.slug}`,
+    type: "NewsArticle",
+  });
 
   return (
-    <EditorialDetail
-      item={article}
-      eyebrow="News Article"
-      collectionHref="/news"
-      collectionLabel="News"
-      relatedHeading="More to Explore"
-      relatedItems={relatedItems}
-    />
+    <>
+      <StructuredData data={breadcrumbSchema} />
+      <StructuredData data={articleSchema} />
+      <EditorialDetail
+        item={article}
+        eyebrow="News Article"
+        collectionHref="/news"
+        collectionLabel="News"
+        relatedHeading="More to Explore"
+        relatedItems={relatedItems}
+      />
+    </>
   );
 }

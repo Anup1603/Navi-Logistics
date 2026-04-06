@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -19,6 +17,7 @@ import {
   StaggerItem,
 } from "@/components/AnimatedComponents";
 import { siteData } from "@/content/siteData";
+import type { Metadata } from "next";
 import {
   Globe,
   ArrowRight,
@@ -32,6 +31,12 @@ const services = siteData.home.services;
 const stats = siteData.home.stats;
 const features = siteData.home.features;
 const testimonials = siteData.home.testimonials;
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: siteData.seo.siteUrl,
+  },
+};
 
 export default function HomePage() {
   return (

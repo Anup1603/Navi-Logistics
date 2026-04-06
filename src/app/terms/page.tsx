@@ -1,5 +1,3 @@
-"use client";
-
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -9,9 +7,18 @@ import {
 } from "@/components/AnimatedComponents";
 import Image from "next/image";
 import { siteData } from "@/content/siteData";
+import { createPageMetadata } from "@/lib/seo";
 import { Phone } from "lucide-react";
 
 const sections = siteData.termsPage.sections;
+
+export const metadata = createPageMetadata({
+  title: "Terms of Service",
+  description:
+    "Review the Navi Logistics terms of service, payment terms, shipment responsibilities, liability details, and dispute resolution policies.",
+  path: "/terms",
+  keywords: ["terms of service", "shipping terms", "Navi Logistics terms"],
+});
 
 export default function TermsPage() {
   return (

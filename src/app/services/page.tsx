@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -13,6 +11,7 @@ import {
   StaggerItem,
 } from "@/components/AnimatedComponents";
 import { siteData } from "@/content/siteData";
+import { createPageMetadata } from "@/lib/seo";
 import {
   ArrowRight,
   CheckCircle,
@@ -22,6 +21,21 @@ const services = siteData.servicesPage.services;
 const process = siteData.servicesPage.process;
 const industries = siteData.servicesPage.industries;
 const stats = siteData.servicesPage.stats;
+
+export const metadata = createPageMetadata({
+  title: "Logistics Services",
+  description:
+    "Explore Navi Logistics services including 3PL, warehousing, FTL, PTL, express delivery, air freight, and rail freight solutions across India.",
+  path: "/services",
+  keywords: [
+    "3PL services India",
+    "warehousing services",
+    "FTL services",
+    "PTL services",
+    "air freight services",
+    "rail freight services",
+  ],
+});
 
 export default function ServicesPage() {
   return (

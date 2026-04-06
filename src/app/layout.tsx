@@ -64,9 +64,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: siteData.seo.siteUrl,
-  },
   verification: {
     // Add your Google Search Console verification code here
     // google: "your-google-verification-code",
